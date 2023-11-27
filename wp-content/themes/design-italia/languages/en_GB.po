@@ -1,0 +1,584 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Package Name\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-11-12 21:55+0100\n"
+"PO-Revision-Date: 2023-11-12 22:03+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Eazy Po 1.0.0.0\n"
+
+#: -archive-luogocontemporaneo.php:681 -page-esplora.php:348
+#: archive-luogocontemporaneo.php:831
+msgid "Sorry, no posts were found."
+msgstr "Sorry, no posts were found."
+
+#: archive-luogocontemporaneo.php:377 BreadcrumbTrail.php:421
+#: BreadcrumbTrail.php:427
+msgid "Esplora"
+msgstr "Explore"
+
+#: archive-luogocontemporaneo.php:399 single-luogocontemporaneo.php:384
+msgid "Luogo"
+msgstr "Venue"
+
+#: archive-luogocontemporaneo.php:405 archive-luogocontemporaneo.php:742
+msgid "Autore"
+msgstr "Author"
+
+#: archive-luogocontemporaneo.php:413 archive-luogocontemporaneo.php:743
+#: inc/cpt-and-taxonomies.php:57 template-parts/search/filters-articolo.php:6
+#: template-parts/search/filters-documento.php:6
+#: template-parts/search/filters-evento.php:15
+#: template-parts/search/filters-luogo.php:6
+#: template-parts/search/filters-servizio.php:6
+#: template-parts/search/filters-struttura.php:6
+#: template-parts/search/filters-tipo_incarico.php:6
+msgid "Tipologia"
+msgstr "Type"
+
+#: archive-luogocontemporaneo.php:415 archive-luogocontemporaneo.php:429
+#: archive-luogocontemporaneo.php:441 archive-luogocontemporaneo.php:455
+msgid "Scegli"
+msgstr "Choose"
+
+#: archive-luogocontemporaneo.php:427
+msgid "Regione"
+msgstr "Region"
+
+#: archive-luogocontemporaneo.php:439
+msgid "Provincia"
+msgstr "Province"
+
+#: archive-luogocontemporaneo.php:453
+msgid "Comune"
+msgstr "Town"
+
+#: archive-luogocontemporaneo.php:470
+msgid "Da anno"
+msgstr "From year"
+
+#: archive-luogocontemporaneo.php:476
+msgid "A anno"
+msgstr "To year"
+
+#: archive-luogocontemporaneo.php:484 BreadcrumbTrail.php:359
+#: BreadcrumbTrail.php:396 BreadcrumbTrail.php:437
+#: single-luogocontemporaneo.php:144 inc/cpt-and-taxonomies.php:73
+#: template-parts/search/filters-category.php:4
+#: template-parts/search/filters-tag.php:4
+#: template-parts/single/related.php:100
+msgid "Servizi"
+msgstr "Services"
+
+#: archive-luogocontemporaneo.php:485
+msgid "Scegli i servizi"
+msgstr "Choose services"
+
+#: archive-luogocontemporaneo.php:497
+msgid "Annulla"
+msgstr "Cancel"
+
+#: archive-luogocontemporaneo.php:498
+#: template-parts/common/search-modal.php:33
+msgid "Cerca"
+msgstr "Search"
+
+#: archive-luogocontemporaneo.php:725
+msgid "Esplora i luoghi"
+msgstr "Explore venues"
+
+#: archive-luogocontemporaneo.php:728
+msgid "Schede"
+msgstr "Cards"
+
+#: archive-luogocontemporaneo.php:729
+msgid "Tabella"
+msgstr "Table"
+
+#: archive-luogocontemporaneo.php:740
+msgid "Località"
+msgstr "Location"
+
+#: archive-luogocontemporaneo.php:741
+msgid "Denominazione"
+msgstr "Name"
+
+#: archive-luogocontemporaneo.php:744
+msgid "Data"
+msgstr "Date"
+
+#: BreadcrumbTrail.php:273
+msgid "Browse:"
+msgstr "Browse:"
+
+#: BreadcrumbTrail.php:274
+msgctxt "breadcrumbs aria label"
+msgid "Percorso di navigazione"
+msgstr "Navigation path"
+
+#: BreadcrumbTrail.php:275
+msgid "Home"
+msgstr "Home"
+
+#: BreadcrumbTrail.php:276
+msgid "404 Not Found"
+msgstr "404 Not Found"
+
+#: BreadcrumbTrail.php:277
+msgid "Archives"
+msgstr "Archives"
+
+#: BreadcrumbTrail.php:279
+#, php-format
+msgid "Search results for: %s"
+msgstr "Search results for: %s"
+
+#: BreadcrumbTrail.php:281
+#, php-format
+msgid "Page %s"
+msgstr "Page %s"
+
+#: BreadcrumbTrail.php:283
+#, php-format
+msgid "Comment Page %s"
+msgstr "Comment Page %s"
+
+#: BreadcrumbTrail.php:285
+#, php-format
+msgid "Minute %s"
+msgstr "Minute %s"
+
+#: BreadcrumbTrail.php:287
+#, php-format
+msgid "Week %s"
+msgstr "Week %s"
+
+#: BreadcrumbTrail.php:371
+msgid "Documenti pubblici"
+msgstr ""
+
+#: BreadcrumbTrail.php:386
+msgid "Vivere il Comune"
+msgstr ""
+
+#: BreadcrumbTrail.php:391
+msgid "Amministrazione"
+msgstr ""
+
+#: BreadcrumbTrail.php:401 BreadcrumbTrail.php:450
+#: template-parts/search/filters-category.php:5
+#: template-parts/search/filters-tag.php:5
+msgid "Novità"
+msgstr "News"
+
+#: BreadcrumbTrail.php:441 template-parts/search/filters-argomento.php:15
+msgid "Argomenti"
+msgstr "Topics"
+
+#: BreadcrumbTrail.php:445
+msgid "Documenti e dati"
+msgstr "Documents and data"
+
+#: BreadcrumbTrail.php:847
+msgctxt "minute and hour archives time format"
+msgid "g:i a"
+msgstr ""
+
+#: BreadcrumbTrail.php:864
+msgctxt "minute archives time format"
+msgid "i"
+msgstr ""
+
+#: BreadcrumbTrail.php:881
+msgctxt "hour archives time format"
+msgid "g a"
+msgstr ""
+
+#: BreadcrumbTrail.php:897 BreadcrumbTrail.php:926 BreadcrumbTrail.php:953
+#: BreadcrumbTrail.php:980 BreadcrumbTrail.php:1320
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr ""
+
+#: BreadcrumbTrail.php:898 BreadcrumbTrail.php:954 BreadcrumbTrail.php:1324
+msgctxt "monthly archives date format"
+msgid "F"
+msgstr ""
+
+#: BreadcrumbTrail.php:899 BreadcrumbTrail.php:1328
+msgctxt "daily archives date format"
+msgid "j"
+msgstr ""
+
+#: BreadcrumbTrail.php:927
+msgctxt "weekly archives date format"
+msgid "W"
+msgstr ""
+
+#: footer.php:24
+msgid "Telefono:"
+msgstr "Phone:"
+
+#: footer.php:25
+msgid "Codice fiscale / P. IVA:"
+msgstr "Tax ID code / VAT Number"
+
+#: footer.php:26
+msgid "PEO:"
+msgstr "Ordinary mail:"
+
+#: footer.php:27
+msgid "PEC:"
+msgstr "Certified mail:"
+
+#: footer.php:28
+msgid "Sito WEB:"
+msgstr "Website:"
+
+#: footer.php:54 header.php:137
+msgid "Seguici su"
+msgstr "Follow us"
+
+#: header.php:120 inc/cpt-and-taxonomies.php:9
+msgid "Luoghi del contemporaneo"
+msgstr "Contemporary Art Venues"
+
+#: page-credits.php:75 page-progetto.php:113 page.php:78
+#: single-luogocontemporaneo.php:180 template-twoclomunstitleimage.php:71
+#: template-twocolumns.php:73
+msgid "INDICE DELLA PAGINA"
+msgstr "PAGE INDEX"
+
+#: single-luogocontemporaneo.php:63
+msgid "Condividi"
+msgstr "Share"
+
+#: single-luogocontemporaneo.php:109
+msgid "Vedi azioni"
+msgstr "See actions"
+
+#: single-luogocontemporaneo.php:119
+msgid "Stampa"
+msgstr "Print"
+
+#: single-luogocontemporaneo.php:127
+msgid "Ascolta"
+msgstr "Listen"
+
+#: single-luogocontemporaneo.php:135
+msgid "Invia"
+msgstr "Send"
+
+#: single-luogocontemporaneo.php:229
+msgid "Contatti"
+msgstr "Contacts"
+
+#: single-luogocontemporaneo.php:235 single-luogocontemporaneo.php:665
+msgid "Note"
+msgstr "Notes"
+
+#: single-luogocontemporaneo.php:242
+msgid "Info"
+msgstr "Info"
+
+#: single-luogocontemporaneo.php:258
+msgid "Cos'è?"
+msgstr "What is it?"
+
+#: single-luogocontemporaneo.php:278
+msgid "Galleria di immagini"
+msgstr "Image gallery"
+
+#: single-luogocontemporaneo.php:674
+msgid "Informazioni varie"
+msgstr "Various informations"
+
+#: inc/cpt-and-taxonomies.php:10
+msgid "Luogo del contemporaneo"
+msgstr "Contemporary Art Venue"
+
+#: inc/cpt-and-taxonomies.php:11
+msgid "Aggiungi"
+msgstr "Add"
+
+#: inc/cpt-and-taxonomies.php:12
+msgid "Aggiungi un nuovo luogo"
+msgstr "Add new venue"
+
+#: inc/cpt-and-taxonomies.php:13
+msgid "Vedi luogo"
+msgstr "See venue"
+
+#: inc/cpt-and-taxonomies.php:14
+msgid "Modifica luogo"
+msgstr "Edit venue"
+
+#: inc/cpt-and-taxonomies.php:15
+msgid "Cerca luoghi"
+msgstr "Search venues"
+
+#: inc/cpt-and-taxonomies.php:16
+msgid "Luoghi non trovati"
+msgstr "Venues not found"
+
+#: inc/cpt-and-taxonomies.php:17
+msgid "Luoghi non trovati nel cestino"
+msgstr "Venues not found in the trash"
+
+#: inc/cpt-and-taxonomies.php:24
+msgid "esplora"
+msgstr "explore"
+
+#: inc/cpt-and-taxonomies.php:50
+msgid "Tipologie"
+msgstr "Types"
+
+#: inc/cpt-and-taxonomies.php:58
+msgid "Tutte le Tipologie"
+msgstr "All Types"
+
+#: inc/cpt-and-taxonomies.php:59
+msgid "Modifica Tipologia"
+msgstr "Edit Type"
+
+#: inc/cpt-and-taxonomies.php:60
+msgid "Mostra Tipologia"
+msgstr "Show Type"
+
+#: inc/cpt-and-taxonomies.php:61
+msgid "Aggiorna Tipologia"
+msgstr "Update Type"
+
+#: inc/cpt-and-taxonomies.php:62
+msgid "Aggiungi Nuova Tipologia"
+msgstr "Add New Type"
+
+#: inc/cpt-and-taxonomies.php:63
+msgid "Nuovo Nome Tipologia"
+msgstr "New Type Name"
+
+#: inc/cpt-and-taxonomies.php:64
+msgid "Cerca Tipologie"
+msgstr "Search Types"
+
+#: inc/cpt-and-taxonomies.php:65
+msgid "Tipologie Popolari"
+msgstr "Popular Types"
+
+#: inc/cpt-and-taxonomies.php:66
+msgid "Separa le tipologie con la virgola"
+msgstr "Separate the types with a comma"
+
+#: inc/cpt-and-taxonomies.php:67
+msgid "Scegli fra le tipologie più usate"
+msgstr "Choose from the most used types"
+
+#: inc/cpt-and-taxonomies.php:68
+msgid "Nessuna tipologia trovata"
+msgstr "No types found"
+
+#: inc/cpt-and-taxonomies.php:79
+msgid "Servizio"
+msgstr "Service"
+
+#: inc/cpt-and-taxonomies.php:80
+msgid "Tutti i Servizi"
+msgstr "All services"
+
+#: inc/cpt-and-taxonomies.php:81
+msgid "Modifica Servizio"
+msgstr "Edit Service"
+
+#: inc/cpt-and-taxonomies.php:82
+msgid "Mostra Servizio"
+msgstr "Show Service"
+
+#: inc/cpt-and-taxonomies.php:83
+msgid "Aggiorna Servizio"
+msgstr "Update Service"
+
+#: inc/cpt-and-taxonomies.php:84
+msgid "Aggiungi Nuovo Servizio"
+msgstr "Add New Service"
+
+#: inc/cpt-and-taxonomies.php:85
+msgid "Nuovo Nome Servizio"
+msgstr "New Service Name"
+
+#: inc/cpt-and-taxonomies.php:86
+msgid "Cerca Servizi"
+msgstr "Search Services"
+
+#: inc/cpt-and-taxonomies.php:87
+msgid "Servizi Popolari"
+msgstr "Popular Services"
+
+#: inc/cpt-and-taxonomies.php:88
+msgid "Separa i servizi con la virgola"
+msgstr "Separate services with commas"
+
+#: inc/cpt-and-taxonomies.php:89
+msgid "Scegli fra i servizi più usati"
+msgstr "Choose from the most used services"
+
+#: inc/cpt-and-taxonomies.php:90
+msgid "Nessun servizio trovato"
+msgstr "No services found"
+
+#: inc/cpt-and-taxonomies.php:519
+msgid "Rating is mandatory for creating a new movie post"
+msgstr ""
+
+#: inc/menus-and-walkers.php:12
+msgid "Main menu"
+msgstr "Main menu"
+
+#: inc/menus-and-walkers.php:13
+msgid "Lang menu"
+msgstr "Lang menu"
+
+#: inc/menus-and-walkers.php:14
+msgid "Footer menu 1"
+msgstr "Footer menu 1"
+
+#: inc/menus-and-walkers.php:15
+msgid "Footer menu 2"
+msgstr "Footer menu 2"
+
+#: inc/menus-and-walkers.php:16
+msgid "Bottom menu"
+msgstr "Bottom menu"
+
+#: inc/theme-options.php:9
+msgid "Footer"
+msgstr "Footer"
+
+#: inc/theme-options.php:12
+msgid "Cambia le impostazioni del footer qui."
+msgstr "Change footer settings here."
+
+#: template-parts/content-none.php:1
+msgid "Nessun risultato"
+msgstr "No result"
+
+#: template-parts/common/breadcrumb.php:22
+msgid "Ricerca"
+msgstr "Search"
+
+#: template-parts/common/search-modal.php:66
+msgid "Cerca nel sito"
+msgstr "Search in the site"
+
+#: template-parts/header/menu-article.php:34
+#: template-parts/single/related.php:82
+msgid "Vai all'argomento"
+msgstr "Go to the topic"
+
+#: template-parts/header/status.php:31
+msgid "Documento Annullato"
+msgstr ""
+
+#: template-parts/header/status.php:48
+msgid "Documento Scaduto"
+msgstr ""
+
+#: template-parts/header/status.php:63
+msgid "Progetto Realizzato"
+msgstr ""
+
+#: template-parts/home/banner.php:14
+msgid "Pubblicità e Informazione"
+msgstr ""
+
+#: template-parts/home/commissioni.php:17
+msgid "Commissioni e gruppi di lavoro"
+msgstr ""
+
+#: template-parts/home/commissioni.php:39
+msgid "Responsabile"
+msgstr ""
+
+#: template-parts/home/commissioni.php:58
+msgid "Persone"
+msgstr ""
+
+#: template-parts/home/commissioni.php:78
+msgid "Per informazioni"
+msgstr ""
+
+#: template-parts/home/commissioni.php:80 template-parts/luogo/card.php:137
+msgid "Telefono"
+msgstr "Phone:"
+
+#: template-parts/home/commissioni.php:81 template-parts/luogo/card.php:115
+msgid "Email"
+msgstr "Email"
+
+#: template-parts/home/commissioni.php:82 template-parts/luogo/card.php:125
+msgid "PEC"
+msgstr "Certified mail:"
+
+#: template-parts/home/commissioni.php:86
+msgid "Vai alla scheda"
+msgstr ""
+
+#: template-parts/home/commissioni.php:103
+msgid "Tutta l’organizzazione"
+msgstr ""
+
+#: template-parts/luogo/card-nophone.php:69 template-parts/luogo/card.php:85
+msgid "indirizzo"
+msgstr "address"
+
+#: template-parts/luogo/card-nophone.php:79 template-parts/luogo/card.php:95
+msgid "CAP"
+msgstr "ZIP code"
+
+#: template-parts/luogo/card-nophone.php:89 template-parts/luogo/card.php:105
+msgid "Orari"
+msgstr ""
+
+#: template-parts/luogo/card-nophone.php:131 template-parts/luogo/card.php:147
+msgid "Rif."
+msgstr ""
+
+#: template-parts/luogo/card.php:159
+msgid "Naviga su Google Map"
+msgstr ""
+
+#: template-parts/search/filters-category.php:3
+#: template-parts/search/filters-tag.php:3
+msgid "Scuola"
+msgstr "School"
+
+#: template-parts/search/filters-category.php:6
+#: template-parts/search/filters-tag.php:6
+msgid "Didattica"
+msgstr "Teaching"
+
+#: template-parts/single/related.php:73
+msgid "Altri contenuti che potrebbero interessarti"
+msgstr ""
+
+#: template-parts/single/related.php:76
+msgid "Contenuti filtrati per:"
+msgstr ""
+
+#: template-parts/single/related.php:125
+msgid "Notizie"
+msgstr "News"
+
+#: template-parts/single/related.php:151
+msgid "Documenti"
+msgstr "Documents"

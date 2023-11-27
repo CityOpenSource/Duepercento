@@ -1,0 +1,83 @@
+.leaflet-control-layers-selector {
+    width: 10px;
+    height: 10px;
+    border: 1px solid #000;
+}
+
+.cmp-navscroll .navbar.it-navscroll-wrapper .link-list-wrapper .accordion .accordion-header .accordion-button,
+.card-title a {
+    color: #191919;
+}
+
+@media only screen {
+    .screen-reader-text {
+      display: none;
+    }
+  }
+.navigation.pagination {
+    margin: auto;
+}
+.pagination ul.page-numbers {
+    display: flex;
+}
+.pagination li .page-numbers {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5rem;
+    min-width: 2.5rem;
+    border-radius: 4px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #5d7083;
+    background-color: rgba(0,0,0,0);
+    padding: 0 0.75rem;
+}
+.pagination li .page-numbers {
+    height: 3rem;
+    min-width: 3rem;
+}
+
+.pagination li .page-numbers[aria-current]  {
+    border: 1px solid #323333;
+    color: #323333;
+    pointer-events: none;
+}
+
+
+.chosen-container.chosen-container-multi.chosen-with-drop.chosen-container-active input, .chosen-container.chosen-container-multi.chosen-with-drop.chosen-container-active li {
+    outline: none!important;
+}
+.chosen-choices {
+    border: 0!important;
+    background-image: none!important;
+}
+.chosen-choices {
+    min-height: 40px!important;
+    border-bottom: 1px solid #000!important;
+    padding: 6px!important;
+    font-size: 16px;
+}
+.chosen-container-multi .chosen-choices li.search-field input[type="text"], .chosen-choices>li {
+    height: 28px!important;
+    display: inline-block!important;
+    font-size: 1rem!important;
+    font-family: 'Titillium Web'!important;
+}
+.chosen-choices>li.search-choice {
+    height: 24px!important;
+    display: inline-block!important;
+    font-size: 1rem!important;
+    font-family: 'Titillium Web'!important;
+}
+.chosen-drop li {
+    height: 28px!important;
+    line-height: 1!important;
+    display: block!important; 
+    font-family: 'Titillium Web'!important;
+}
+
+.leaflet-popup-content {
+    width: 300px;
+}

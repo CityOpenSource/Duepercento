@@ -1,0 +1,17 @@
+aside, .it-header-slim-wrapper, .it-nav-wrapper #header, .it-nav-wrapper .it-right-zone, #main-container .dropdown {
+    display: none!important;
+}
+
+.it-page-sections-container, #main-container .col-lg-8, #main-container .col-lg-3 {
+    width: 100%!important;
+    border-left: 0!important;
+}
+
+#main-container .col-lg-3.offset-lg-1 {
+    margin-left: 0!important;
+    padding-left: 1.5rem !important;
+}
+
+.shadow {
+    box-shadow: none!important;
+}
