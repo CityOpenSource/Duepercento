@@ -19,16 +19,16 @@
   $tip = get_post_meta( $post->ID, 'luogo_tipologia_id', true );
 
 
-  $tipologia = wp_get_post_terms( $post->ID, 'tipologia' )[0]; 
-  $colore = get_term_meta( $tipologia->term_id, 'color', true ); 
-  $servizi = wp_get_post_terms( $post->ID, 'servizio' );  
+  // $tipologia = wp_get_post_terms( $post->ID, 'tipologia' )[0]; 
+  // $colore = get_term_meta( $tipologia->term_id, 'color', true ); 
+  // $servizi = wp_get_post_terms( $post->ID, 'servizio' );  
 
-    $info = [];
-    
-    $bando_id  = (int) get_post_meta( $post->ID, 'bando', true );
-    $bando_url = $bando_id ? wp_get_attachment_url( $bando_id ) : '';
-    $documentazione_id  = (int) get_post_meta( $post->ID, 'documentazione', true );
-    $documentazione_url = $documentazione_id ? wp_get_attachment_url( $documentazione_id ) : '';
+  $info = []; 
+  
+  $bando_id  = (int) get_post_meta( $post->ID, 'bando', true );
+  $bando_url = $bando_id ? wp_get_attachment_url( $bando_id ) : '';
+  $documentazione_id  = (int) get_post_meta( $post->ID, 'documentazione', true );
+  $documentazione_url = $documentazione_id ? wp_get_attachment_url( $documentazione_id ) : '';
 ?>
 
 <main>

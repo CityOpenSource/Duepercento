@@ -25,71 +25,53 @@ function create_luogo_post_type() {
             'supports' => array('title', 'editor', 'thumbnail', "custom-fields", "author"),
             'show_ui' => true,
             'map_meta_cap' => true,
-            // 'capability_type' => $slug,
-            // 'capabilities' => [
-            //     'create_posts' => 'create_' . $slug_plural,
-            //     'delete_others_posts' => 'delete_others_' . $slug_plural,
-            //     'delete_posts' => 'delete_' . $slug_plural,
-            //     'delete_private_posts' => 'delete_private_' . $slug_plural,
-            //     'delete_published_posts' => 'delete_published_' . $slug_plural,
-            //     'edit_posts' => 'edit_' . $slug_plural,
-            //     'edit_others_posts' => 'edit_others_' . $slug_plural,
-            //     'edit_private_posts' => 'edit_private_' . $slug_plural,
-            //     'edit_published_posts' => 'edit_published_' . $slug_plural,
-            //     'publish_posts' => 'publish_' . $slug_plural,
-            //     'read_private_posts' => 'read_private_' . $slug_plural,
-            //     'read_others_posts' => 'read_others_' . $slug_plural,
-            //     'list_others_posts' => 'list_others_' . $slug_plural,
-            //     'list_published_posts' => 'list_published_' . $slug_plural,
-            //     'read' => 'read_' . $slug_plural,
-            // ]
         )
     );
  
-    register_taxonomy('tipologia', ['operaduepercento'], [
-        'label' => __('Tipologie', 'txtdomain'),
-        'hierarchical' => false,
-        'rewrite' => ['slug' => 'tipologie'],
-        'show_admin_column' => true,
-        'show_in_rest' => true,
-		'meta_box_cb'       => 'tipologia_meta_box',
-        'labels' => [
-            'singular_name' => __('Tipologia', 'txtdomain'),
-            'all_items' => __('Tutte le Tipologie', 'txtdomain'),
-            'edit_item' => __('Modifica Tipologia', 'txtdomain'),
-            'view_item' => __('Mostra Tipologia', 'txtdomain'),
-            'update_item' => __('Aggiorna Tipologia', 'txtdomain'),
-            'add_new_item' => __('Aggiungi Nuova Tipologia', 'txtdomain'),
-            'new_item_name' => __('Nuovo Nome Tipologia', 'txtdomain'),
-            'search_items' => __('Cerca Tipologie', 'txtdomain'),
-            'popular_items' => __('Tipologie Popolari', 'txtdomain'),
-            'separate_items_with_commas' => __('Separa le tipologie con la virgola', 'txtdomain'),
-            'choose_from_most_used' => __('Scegli fra le tipologie più usate', 'txtdomain'),
-            'not_found' => __('Nessuna tipologia trovata', 'txtdomain'),
-        ]
-    ]); 
+    // register_taxonomy('tipologia', ['operaduepercento'], [
+    //     'label' => __('Tipologie', 'txtdomain'),
+    //     'hierarchical' => false,
+    //     'rewrite' => ['slug' => 'tipologie'],
+    //     'show_admin_column' => true,
+    //     'show_in_rest' => true,
+	// 	'meta_box_cb'       => 'tipologia_meta_box',
+    //     'labels' => [
+    //         'singular_name' => __('Tipologia', 'txtdomain'),
+    //         'all_items' => __('Tutte le Tipologie', 'txtdomain'),
+    //         'edit_item' => __('Modifica Tipologia', 'txtdomain'),
+    //         'view_item' => __('Mostra Tipologia', 'txtdomain'),
+    //         'update_item' => __('Aggiorna Tipologia', 'txtdomain'),
+    //         'add_new_item' => __('Aggiungi Nuova Tipologia', 'txtdomain'),
+    //         'new_item_name' => __('Nuovo Nome Tipologia', 'txtdomain'),
+    //         'search_items' => __('Cerca Tipologie', 'txtdomain'),
+    //         'popular_items' => __('Tipologie Popolari', 'txtdomain'),
+    //         'separate_items_with_commas' => __('Separa le tipologie con la virgola', 'txtdomain'),
+    //         'choose_from_most_used' => __('Scegli fra le tipologie più usate', 'txtdomain'),
+    //         'not_found' => __('Nessuna tipologia trovata', 'txtdomain'),
+    //     ]
+    // ]); 
  
-    register_taxonomy('servizio', ['operaduepercento'], [
-        'label' => __('Servizi', 'txtdomain'),
-        'hierarchical' => false,
-        'rewrite' => ['slug' => 'servizi'],
-        'show_admin_column' => true,
-        'show_in_rest' => true,
-        'labels' => [
-            'singular_name' => __('Servizio', 'txtdomain'),
-            'all_items' => __('Tutti i Servizi', 'txtdomain'),
-            'edit_item' => __('Modifica Servizio', 'txtdomain'),
-            'view_item' => __('Mostra Servizio', 'txtdomain'),
-            'update_item' => __('Aggiorna Servizio', 'txtdomain'),
-            'add_new_item' => __('Aggiungi Nuovo Servizio', 'txtdomain'),
-            'new_item_name' => __('Nuovo Nome Servizio', 'txtdomain'),
-            'search_items' => __('Cerca Servizi', 'txtdomain'),
-            'popular_items' => __('Servizi Popolari', 'txtdomain'),
-            'separate_items_with_commas' => __('Separa i servizi con la virgola', 'txtdomain'),
-            'choose_from_most_used' => __('Scegli fra i servizi più usati', 'txtdomain'),
-            'not_found' => __('Nessun servizio trovato', 'txtdomain'),
-        ]
-    ]); 
+    // register_taxonomy('servizio', ['operaduepercento'], [
+    //     'label' => __('Servizi', 'txtdomain'),
+    //     'hierarchical' => false,
+    //     'rewrite' => ['slug' => 'servizi'],
+    //     'show_admin_column' => true,
+    //     'show_in_rest' => true,
+    //     'labels' => [
+    //         'singular_name' => __('Servizio', 'txtdomain'),
+    //         'all_items' => __('Tutti i Servizi', 'txtdomain'),
+    //         'edit_item' => __('Modifica Servizio', 'txtdomain'),
+    //         'view_item' => __('Mostra Servizio', 'txtdomain'),
+    //         'update_item' => __('Aggiorna Servizio', 'txtdomain'),
+    //         'add_new_item' => __('Aggiungi Nuovo Servizio', 'txtdomain'),
+    //         'new_item_name' => __('Nuovo Nome Servizio', 'txtdomain'),
+    //         'search_items' => __('Cerca Servizi', 'txtdomain'),
+    //         'popular_items' => __('Servizi Popolari', 'txtdomain'),
+    //         'separate_items_with_commas' => __('Separa i servizi con la virgola', 'txtdomain'),
+    //         'choose_from_most_used' => __('Scegli fra i servizi più usati', 'txtdomain'),
+    //         'not_found' => __('Nessun servizio trovato', 'txtdomain'),
+    //     ]
+    // ]); 
 }
 add_action('init', 'create_luogo_post_type');
 
@@ -101,8 +83,7 @@ add_action('init', 'create_luogo_post_type');
 // A callback function to add a custom field to our "presenters" taxonomy
 function create_tipologia_taxonomy($term) {
     // Check for existing taxonomy meta for the term you're editing
-     $t_id = $tag->term_id; // Get the ID of the term you're editing
-    //  $description = get_option( "taxonomy_term_$t_id" ); // Do the check
+     $t_id = $tag->term_id; // Get the ID of the term you're editing 
      $description = get_term_meta( $term->term_id, 'description', true );
      $color = get_term_meta( $term->term_id, 'color', true );
      $term_meta = array('description'=>$description,'color'=>$color);
@@ -123,8 +104,7 @@ function create_tipologia_taxonomy($term) {
      </th>
      <td>
         <?php
-            //We first get the post_meta from the DB if there's any there.
-            // $description        = get_post_meta( $post->ID, 'description2', true );
+            //We first get the post_meta from the DB if there's any there. 
             //Second ID the field.
             $description_field  = 'description2';
             //Provide the settings arguments for this specific editor in an array
@@ -298,10 +278,7 @@ function add_luoghi_form_meta_box() {
  * @param object $post Post
  */
 function luoghi_form_meta_altro_box($post) {
-    global $wpdb;
-    // $query = "SELECT * 
-    // FROM {$wpdb->prefix}luoghi_tipologie AS t ORDER BY t.tipologia_nome_ita";
-    // $tipologie = $wpdb->get_results( $query, OBJECT ); 
+    global $wpdb; 
     $bando_id  = (int) get_post_meta( $post->ID, 'bando', true );
     $bando_url = $bando_id ? wp_get_attachment_url( $bando_id ) : '';
     $documentazione_id  = (int) get_post_meta( $post->ID, 'documentazione', true );
@@ -324,12 +301,7 @@ function luoghi_form_meta_altro_box($post) {
     <!--<p class=\"meta-options hcf_field\">
         <label for=\"luogo_tipologia_id\" class=\"required\">Tipologia * </label>
         <select id=\"luogo_tipologia_id\" name=\"luogo_tipologia_id\" required>
-        <option value=\"\">-- Seleziona un valore --</option>";
-        
-        // $loc = get_post_meta($post->ID, 'luogo_tipologia_id', true);
-        // foreach($tipologie as $r=>$c) { 
-            // echo "<option value=\"{$c->tipologia_id}\"".($c->tipologia_id == $loc ? ' selected':'').">{$c->tipologia_nome_ita}</option>";
-        // }
+        <option value=\"\">-- Seleziona un valore --</option>"; 
         echo "</select>    </p> -->
 
     <p class=\"meta-options hcf_field\">
@@ -399,6 +371,7 @@ function luoghi_form_meta_indirizzo_box($post) {
     FROM {$wpdb->prefix}localita AS c 
     INNER JOIN {$wpdb->prefix}province AS p ON c.localita_provincia_id = p.provincia_id
     INNER JOIN {$wpdb->prefix}regioni AS r ON p.provincia_regione_id = r.regione_id 
+    ORDER BY c.localita_nome
     ";
     $regioni2 = $wpdb->get_results( $query, OBJECT ); 
 
@@ -547,24 +520,9 @@ function tipologia_meta_box( $post ) {
 		</label><br>
 <?php
     }
-}
-/**
- * Register 'Movie Rating' custom taxonomy.
- */
-// function register_tipologia_taxonomy() {
-    
-// 	$args = array(
-// 		'label'             => __( 'Rating' ),
-// 		'hierarchical'      => false,
-// 		'show_ui'           => true,
-// 		'show_admin_column' => true,
-// 		'meta_box_cb'       => 'tipologia_meta_box',
-// 	);
+} 
 
-// 	register_taxonomy( 'tipologia', 'movie', $args );
-// }
-// add_action( 'init', 'register_tipologia_taxonomy' );
-  /**
+/**
  * Save the movie meta box results.
  *
  * @param int $post_id The ID of the post that's being saved.
