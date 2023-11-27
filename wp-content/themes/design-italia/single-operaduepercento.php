@@ -4,35 +4,31 @@
  *
  * @package Design_Comuni_Italia
  */
-// print_r($_GET);
-// print_r($_POST);
-get_header();
-$metas = get_post_meta( $post->ID);
-$gallery = get_post_meta( $post->ID, 'gallery_data', true );
-$citta = get_post_meta( $post->ID, 'luogo_localita_id', true );
-$sql = "SELECT * FROM {$wpdb->prefix}luoghi_localita AS l INNER JOIN {$wpdb->prefix}luoghi_province AS p ON l.localita_provincia_id = p.provincia_id INNER JOIN {$wpdb->prefix}luoghi_regioni AS r ON p.provincia_regione_id = r.regione_id WHERE l.localita_id = '".$citta."'";
-$indirizzo = $wpdb->get_results($sql)[0];
 
-$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' ); 
-if(empty($image)) $image = $gallery['image_url'][0];
+  get_header();
+  $metas = get_post_meta( $post->ID);
+  $gallery = get_post_meta( $post->ID, 'gallery_data', true );
+  $citta = get_post_meta( $post->ID, 'luogo_localita_id', true );
+  $sql = "SELECT * FROM {$wpdb->prefix}luoghi_localita AS l INNER JOIN {$wpdb->prefix}luoghi_province AS p ON l.localita_provincia_id = p.provincia_id INNER JOIN {$wpdb->prefix}luoghi_regioni AS r ON p.provincia_regione_id = r.regione_id WHERE l.localita_id = '".$citta."'";
+  $indirizzo = $wpdb->get_results($sql)[0];
 
-
-$tip = get_post_meta( $post->ID, 'luogo_tipologia_id', true );
+  $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' ); 
+  if(empty($image)) $image = $gallery['image_url'][0];
 
 
-$tipologia = wp_get_post_terms( $post->ID, 'tipologia' )[0]; 
-$colore = get_term_meta( $tipologia->term_id, 'color', true ); 
-$servizi = wp_get_post_terms( $post->ID, 'servizio' );  
-
-  $info = [];
+  $tip = get_post_meta( $post->ID, 'luogo_tipologia_id', true );
 
 
+  $tipologia = wp_get_post_terms( $post->ID, 'tipologia' )[0]; 
+  $colore = get_term_meta( $tipologia->term_id, 'color', true ); 
+  $servizi = wp_get_post_terms( $post->ID, 'servizio' );  
 
-  
-  $bando_id  = (int) get_post_meta( $post->ID, 'bando', true );
-  $bando_url = $bando_id ? wp_get_attachment_url( $bando_id ) : '';
-  $documentazione_id  = (int) get_post_meta( $post->ID, 'documentazione', true );
-  $documentazione_url = $documentazione_id ? wp_get_attachment_url( $documentazione_id ) : '';
+    $info = [];
+    
+    $bando_id  = (int) get_post_meta( $post->ID, 'bando', true );
+    $bando_url = $bando_id ? wp_get_attachment_url( $bando_id ) : '';
+    $documentazione_id  = (int) get_post_meta( $post->ID, 'documentazione', true );
+    $documentazione_url = $documentazione_id ? wp_get_attachment_url( $documentazione_id ) : '';
 ?>
 
 <main>

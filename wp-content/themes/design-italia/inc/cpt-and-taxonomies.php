@@ -100,7 +100,6 @@ add_action('init', 'create_luogo_post_type');
 
 // A callback function to add a custom field to our "presenters" taxonomy
 function create_tipologia_taxonomy($term) {
-    // print_r($tag);
     // Check for existing taxonomy meta for the term you're editing
      $t_id = $tag->term_id; // Get the ID of the term you're editing
     //  $description = get_option( "taxonomy_term_$t_id" ); // Do the check
@@ -154,8 +153,6 @@ function save_tipologia_custom_fields( $term_id ) {
         $description = get_term_meta( $term->term_id, 'description', true );
         $color = get_term_meta( $term->term_id, 'color', true );
         $term_meta = array('description'=>$description,'color'=>$color);
-        // print_r($_POST);
-        // print_r($term_meta);die();
         $cat_keys = array_keys( $_POST['term_meta'] );
             foreach ( $cat_keys as $key ){
             if ( isset( $_POST['term_meta'][$key] ) ){
@@ -243,46 +240,39 @@ function luoghi_save_meta_box( $post_id ) {
     if ( $parent_id = wp_is_post_revision( $post_id ) ) {
         $post_id = $parent_id;
     }
+     
     $fields = [
+        'sede',
+        'indirizzo',
+        'luogo', 
         'indirizzo',
         'luogo',
-        // 'luogo_cap',
-        'luogo_telefono',
-        'luogo_email',
-        'luogo_web',
-        'luogo_facebook',
-        'luogo_twitter',
-        'luogo_instagram',
-        'luogo_youtube',
+        'regione',
         'lat',
         'lon',
-        // 'luogo_tipologia_id',
-        'luogo_data_inserimento',
-        'luogo_note',
-        // 'luogo_url',
-        'luogo',
-        'luogo_collezione',
-        
-        'luogo_autore',
-        'luogo_realizzazione',
-        'luogo_collocazione',
-        'luogo_dimensioni',
-        'luogo_promotore',
-        'luogo_curatore', 
-        'luogo_collocazione',
-        'luogo_dimensioni',
-        'luogo_promotore',
-        'luogo_curatore', 
-        'luogo_proprietario',
-        'luogo_gestore',
-        // 'luogo_tipologia',
-        'luogo_opere', 
+        'anno',
+        'anno_bando',
+        'anno_opera',
+        'autore',
+        'tipologia',
+        'opera_pubblica',
+        'categoria',
+        'quota',
+        'bando',
+        'documentazione', 
+        'commissione', 
     ];
     foreach ( $fields as $field ) {
         if ( array_key_exists( $field, $_GET ) ) {
             update_post_meta( $post_id, $field, sanitize_text_field( $_GET[$field] ) );
         }
-     }
+    }
+    
+    foreach ( $fields as $field ) {
+        if ( array_key_exists( $field, $_POST ) ) {
+            update_post_meta( $post_id, $field, sanitize_text_field( $_POST[$field] ) );
+        }
+    }
 }
 add_action( 'add_meta_boxes', 'add_luoghi_form_meta_box' ); 
 add_action( 'save_post', 'luoghi_save_meta_box' );
@@ -344,17 +334,17 @@ function luoghi_form_meta_altro_box($post) {
 
     <p class=\"meta-options hcf_field\">
         <label for=\"anno\">Anno</label>
-        <input id=\"anno\" type=\"date\" name=\"anno\" value=\"".get_post_meta($post->ID, 'anno', true)."\">
+        <input id=\"anno\" type=\"number\" name=\"anno\" value=\"".get_post_meta($post->ID, 'anno', true)."\">
     </p>  
     
     <p class=\"meta-options hcf_field\">
         <label for=\"anno_bando\">Anno Bando</label>
-        <input id=\"anno_bando\" type=\"date\" name=\"anno_bando\" value=\"".get_post_meta($post->ID, 'anno_bando', true)."\">
+        <input id=\"anno_bando\" type=\"number\" name=\"anno_bando\" value=\"".get_post_meta($post->ID, 'anno_bando', true)."\">
     </p>  
     
     <p class=\"meta-options hcf_field\">
         <label for=\"anno_opera\">Anno Opera</label>
-        <input id=\"anno_opera\" type=\"date\" name=\"anno_opera\" value=\"".get_post_meta($post->ID, 'anno_opera', true)."\">
+        <input id=\"anno_opera\" type=\"number\" name=\"anno_opera\" value=\"".get_post_meta($post->ID, 'anno_opera', true)."\">
     </p>  
 
     <p class=\"meta-options hcf_field\">
@@ -413,7 +403,7 @@ function luoghi_form_meta_indirizzo_box($post) {
     $regioni2 = $wpdb->get_results( $query, OBJECT ); 
 
     $query = "SELECT *  
-    INNER JOIN {$wpdb->prefix}regioni
+    FROM {$wpdb->prefix}regioni
     ";
     $regioni1 = $wpdb->get_results( $query, OBJECT ); 
 
@@ -458,7 +448,7 @@ function luoghi_form_meta_indirizzo_box($post) {
         <option value=\"\">-- Seleziona un valore --</option>";
         
         $loc = get_post_meta($post->ID, 'regione', true);
-        foreach($regioni2 as $r=>$c) { 
+        foreach($regioni1 as $r=>$c) { 
             echo "<option value=\"{$c->regione_nome}\"".($c->regione_nome == $loc ? ' selected':'').">{$c->regione_nome}</option>";
         }
         echo "</select>
