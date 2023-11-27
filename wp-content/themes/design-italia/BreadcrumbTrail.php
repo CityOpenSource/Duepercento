@@ -182,7 +182,7 @@ class Breadcrumb_Trail {
 
 			// Open the unordered list.
 			$breadcrumb .= sprintf(
-				'<%s class="breadcrumb p-0" data-element="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">',
+				'<%s class="breadcrumb m-0 p-0" data-element="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">',
 				tag_escape( $this->args['list_tag'] )
 			);
 
@@ -292,7 +292,7 @@ class Breadcrumb_Trail {
 			'archive_day'         => '%s',
 			'archive_month'       => '%s',
 			'archive_year'        => '%s',
-			// 'archive_luogocontemporaneo' => 'Esplora',
+			// 'archive_operaduepercento' => 'Esplora',
 		); 
 
 		$this->labels = apply_filters( 'breadcrumb_trail_labels', wp_parse_args( $this->args['labels'], $defaults ) );
@@ -314,7 +314,7 @@ class Breadcrumb_Trail {
 		if ( '%postname%' === trim( get_option( 'permalink_structure' ), '/' ) )
 			$defaults['post'] = 'category';
 
-		$this->post_taxonomy = apply_filters( 'breadcrumb_trail_post_taxonomy', wp_parse_args( $this->args['post_taxonomy'], $defaults ) );
+		$this->post_taxonomy = apply_filters( 'breadcrumb_trail_post_taxonomy', wp_parse_args( $this->args['post_taxonomy'], $defaults ) ); 
 	}
 
 	/**
@@ -352,71 +352,16 @@ class Breadcrumb_Trail {
                     return;
                 }
             }
-
-            if ( is_singular() ) {
-
-				if (get_post_type() == 'servizio') {
-					$this->items[] =  "<a href='".home_url("servizi")."'>".__("Servizi", "design_comuni_italia")."</a>";
-					$terms = get_the_terms(get_the_ID(),'categorie_servizio');
-					if($terms){
-					  foreach ($terms as $term) {
-						  $this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_term_link( $term, 'categorie_servizio' ) ), $term->name );
-					  }
-					}
-					$this->items[] = get_the_title();
-					return;
-				}
-
-				if (get_post_type() == 'documento_pubblico') {
-					$this->items[] =  "<a href='".home_url("documento_pubblico")."'>".__("Documenti pubblici", "design_comuni_italia")."</a>";
-					$terms = get_the_terms(get_the_ID(),'tipi_documento');
-					if($terms){
-					  foreach ($terms as $term) {
-						  $this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_term_link( $term, 'tipi_documento' ) ), $term->name );
-					  }
-					}
-					$this->items[] = get_the_title();
-					return;
-				}
-
-			    $group_name = '';//dci_get_group_name(get_post_type());
-			    //console_log($group_name);
-			    switch ($group_name) {
-                    case 'Vivere il comune' :
-                        $this->items[] =  "<a href='".home_url("vivere-il-comune")."'>".__("Vivere il Comune", "design_comuni_italia")."</a>";
-                        $this->items[] = get_the_title();
-                        return;
-                        break;
-                    case 'Amministrazione':
-                        $this->items[] =  "<a href='".home_url("amministrazione")."'>".__("Amministrazione", "design_comuni_italia")."</a>";
-                        $this->items[] = get_the_title();
-                        return;
-                        break;
-                    case 'Servizi':
-                        $this->items[] =  "<a href='".home_url("servizi")."'>".__("Servizi", "design_comuni_italia")."</a>";
-                        $this->items[] = get_the_title();
-                        return;
-                        break;
-                    case 'Novità':
-                        $this->items[] =  "<a href='".home_url("novita")."'>".__("Novità", "design_comuni_italia")."</a>";
-                        $this->items[] = get_the_title();
-                        return;
-                        break;
-                }
-
+			/* if( is_singular( 'operaduepercento' )) {
+				$this->items[] =  "<a href='".home_url("esplora")."'>".__("Esplora")."</a>";
+			} else */if ( is_singular() ) {
                 $this->add_singular_items();
-                //console_log( $this->items);
             }
-
-			// If viewing a single post.
-			elseif ( is_singular() ) {
-				$this->add_singular_items();
-			}
 
 			// If viewing an archive page.
 			elseif ( is_archive() ) {
 
-                if(is_post_type_archive('luogocontemporaneo')) {
+                if(is_post_type_archive('operaduepercento')) {
 					if(count($_GET)==0) {
 						$this->items[] =  "<a href='".home_url("esplora")."'>".__("Esplora")."</a>";
 					} else {
@@ -1118,9 +1063,10 @@ class Breadcrumb_Trail {
 
 			// Add support for a non-standard label of 'archive_title' (special use case).
 			$label = ! empty( $post_type_object->labels->archive_title ) ? $post_type_object->labels->archive_title : $post_type_object->labels->name;
-
+			if('Luoghi del contemporaneo' == $label) $label = __('Esplora','design-italia');
 			// Core filter hook.
 			$label = apply_filters( 'post_type_archive_title', $label, $post_type_object->name );
+			
 
 			$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_post_type_archive_link( $post_type ) ), $label );
 		}
