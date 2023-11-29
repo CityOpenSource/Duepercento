@@ -1,4 +1,6 @@
-
+error_log
+wp-admin/error_log
 .user.ini
 php.ini
 wp-config.php
+desktop.ini
