@@ -620,7 +620,7 @@ get_header();
                     <li class="nav-item-filler"></li>
                 </ul> 
                 <div class="tab-content" id="card-simpleContent">
-                    <div class="tab-pane p-4 fade" id="card-tab2" role="tabpanel" aria-labelledby="card-simple2-tab" style="overflow: scroll hidden">
+                    <div class="tab-pane p-4 fade show active" id="card-tab2" role="tabpanel" aria-labelledby="card-simple2-tab" style="overflow: scroll hidden">
                         <table class="table table-primary">
                             <thead>
                                 <tr>
@@ -674,7 +674,7 @@ get_header();
                             </tbody>
                         </table>
                     </div>
-                    <div class="tab-pane p-4 fade show active" id="card-tab1" role="tabpanel" aria-labelledby="card-simple1-tab">
+                    <div class="tab-pane p-4 fade" id="card-tab1" role="tabpanel" aria-labelledby="card-simple1-tab">
                         <div id="results" class="page row my-4 g-4" style="background-color:white">
                         <?php
                         if ( have_posts() ) :
