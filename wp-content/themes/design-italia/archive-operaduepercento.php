@@ -66,33 +66,12 @@ function get_args() {
     // get meta query
     $args = [ 'post_type' => 'operaduepercento', 'posts_per_page' => -1  ];
     $meta_query = $args['meta_query'];
-    // $meta_query[] = array(
-    //     'key'       => 'ID',
-    //     'value'     => 10000,
-    //     'compare'   => '<=',
-    // );
     // loop over filters
     foreach( [
-        // 'luogo_indirizzo',
-    // 'luogo_localita_id',
     'cap', 
     'lat',
-    'lon',  
-    // 'luogo_note',
-    // 'luogo_url',
-    // 'luogo_localita_id', 
-    
-    'autore', 
-    // 'luogo_collocazione',
-    // 'luogo_dimensioni',
-    // 'luogo_promotore',
-    // 'luogo_curatore', 
-    // 'luogo_collocazione',
-    // 'luogo_dimensioni',
-    // 'luogo_promotore',
-    // 'luogo_curatore', 
-    // 'luogo_proprietario',
-    // 'luogo_gestore',
+    'lon',    
+    'autore',  
     'tipologia',
     'luogo_opere', ] as $name ) {
 
@@ -137,36 +116,7 @@ function get_args() {
     }
 
     
-    // if( !empty($_GET[ 'tipologia_id' ]) ) {
-    //     $value = sanitize_text_field($_GET[ 'tipologia_id' ]);
-    //     $meta_query[] = array(
-    //         'key'       => 'luogo_tipologia_id',
-    //         'value'     => $value,
-    //         'compare'   => '=',
-    //     );
-    // }
-
-    // if( !empty($_GET[ 'comune_id' ]) ) {
-    //     $value = sanitize_text_field($_GET[ 'comune_id' ]);
-    //     $meta_query[] = array(
-    //         'key'       => 'luogo_localita_id',
-    //         'value'     => $value,
-    //         'compare'   => '=',
-    //     );
-    // }
-
-    
     global $wpdb;
-    // if( empty($_GET[ 'comune_id' ])  && !empty($_GET[ 'provincia_id' ]) ) {
-    //     $value = sanitize_text_field($_GET[ 'provincia_id' ]);
-    //     $mypostids = $wpdb->get_col("SELECT localita_id FROM {$wpdb->prefix}luoghi_localita WHERE localita_provincia_id = '{$value}'"); 
-    //     $meta_query[] = array(
-    //         'key'       => 'luogo_localita_id',
-    //         'value'     => $mypostids,
-    //         'compare'   => 'IN',
-    //     );
-    // } 
-
     if( empty($_GET[ 'comune_id' ])  && empty($_GET[ 'provincia_id' ]) && !empty($_GET[ 'regione_id' ]) ) {
         $value = sanitize_text_field($regioni->{$_GET[ 'regione_id' ]}->nome);
 
@@ -193,33 +143,6 @@ function get_args() {
             $args['post__in'] = count($mypostids) ? $mypostids : [-1];
         }
     }
-    // if( !empty($_GET[ 'tipologia_id' ]) ) {
-    //     $args['tax_query'] = array( // NOTE: array of arrays!
-    //         array(
-    //             'taxonomy' => 'tipologia',
-    //             'field'    => 'term_id',
-    //             'terms'    => array($_GET['tipologia_id']),
-    //             'operator'    => 'IN'
-    //         ),
-    //     );
-    // }
-    // if( !empty($_GET[ 'servizio_id' ]) ) {
-    //     // print_r($_GET[ 'servizio_id' ]);
-    //     $tax_query = $args['tax_query'];
-    //     $tax = array(
-    //             'taxonomy' => 'servizio',
-    //             'field'    => 'term_id',
-    //             'terms'    => $_GET['servizio_id'],
-    //             'operator'    => 'AND'
-    //     );
-    //     if(is_array($tax_query)) {
-    //         $tax_query[]=$tax; 
-    //         $tax_query['relation'] = 'AND';
-    //         $args['tax_query'] = $tax_query;
-    //     } else {
-    //         $args['tax_query'] = array($tax, 'relation' => 'AND');
-    //     } 
-    // }  
     if(is_array($args['meta_query']) && count($args['meta_query'])) $args['meta_query']['relation'] = 'AND';
  
 return $args;
@@ -364,10 +287,6 @@ else:
 
 
 $groups = [];
-// foreach($tipologie as $k=>$tipologia) {
-//     $groups[str_replace('-','',$tipologia->slug)] = 'groups[\''.str_replace('-','',$tipologia->slug).'\'] = L.layerGroup();';
-// } 
-// print_r($regioni);
 get_header();
 ?> 
     <main> 
@@ -622,25 +541,7 @@ get_header();
                         <label for="autore2" class="<?php echo ($_GET['autore'] && !is_array($_GET['autore']) && strlen($_GET['autore'])) ? 'active' : '';?>">Autore</label>
                         <input type="text" class="form-control" id="autore2" name="autore" value="<?php echo ($_GET['autore'] && !is_array($_GET['autore']) && strlen($_GET['autore'])) ? $_GET['autore'] : '';?>">
                     </div>
-                </div>
-
-                <?php /*<div class="col-12 col-md-4">
-                    <div class="form-group">
-                        <label for="autore2" class="<?php echo ($_GET['tipologia'] && !is_array($_GET['tipologia']) && strlen($_GET['tipologia'])) ? 'active' : '';?>">Tipologia</label>
-                        <input type="text" class="form-control" id="tipologia2" name="tipologia" value="<?php echo ($_GET['tipologia'] && !is_array($_GET['tipologia']) && strlen($_GET['tipologia'])) ? $_GET['autore'] : '';?>">
-                    </div>
-                </div>
-                <div class="col-12 col-md-4">
-                    <div class="select-wrapper">
-                        <label for="tipologia_id2">Tipologia</label>
-                        <select id="tipologia_id2" name="tipologia_id" title="Scegli la tipologia" value="<?php echo $category;?>">
-                            <option selected="" value="">Scegli</option>
-                            <?php foreach($tipologie as $k=>$tipologia):?>
-                            <option<?php echo $tipologia->term_id == $category ? ' selected' : '';?> value="<?php echo $tipologia->term_id;?>"><?php echo $tipologia->name;?></option>
-                            <?php endforeach;?>
-                        </select>
-                    </div>
-                </div> */?>
+                </div> 
             </div>
 
             <div class="row">
@@ -648,7 +549,7 @@ get_header();
                     <div class="select-wrapper mt-5">
                         <label for="regione_id2">Regione</label>
                         <select id="regione_id2" name="regione_id" title="Scegli la regione">
-                            <option value="">Scegli</option>
+                            <option value=""><?php _e('Scegli','design-italia');?></option>
                             <?php foreach($regioni as $regione):?>
                             <option<?php echo $regione->regione_id == $_GET['regione_id'] ? ' selected' : '';?> value="<?php echo $regione->regione_id;?>"><?php echo $regione->regione_nome;?></option>
                             <?php endforeach;?>
@@ -660,7 +561,7 @@ get_header();
                     <div class="select-wrapper mt-5">
                         <label for="provincia_id2">Provincia</label>
                         <select id="provincia_id2" name="provincia_id" title="Scegli la provincia"<?php $_GET['regione_id']!='' ? '' : 'disabled'?>>
-                            <option selected="" value="">Scegli</option>
+                            <option selected="" value=""><?php _e('Scegli','design-italia');?></option>
                             <?php if($_GET['regione_id']!='') :?>
                             <?php foreach($temp->{$_GET['regione_id']}->items as $k=>$provincia):?>
                             <option<?php echo $k == $_GET['provincia_id'] ? ' selected' : '';?> value="<?php echo $k;?>" ><?php echo $provincia->nome;?></option>
@@ -672,9 +573,9 @@ get_header();
                 
                 <div class="col-12 col-md-4">
                     <div class="select-wrapper mt-5">
-                        <label for="comune_id2">Comune</label>
+                        <label for="comune_id2"><?php _e('Comune','design-italia');?></label>
                         <select id="comune_id2" name="comune_id" title="Scegli il comune"<?php $_GET['regione_id']!='' || $_GET['provincia_id']!='' ? '' : 'disabled'?>>
-                            <option selected="" value="">Scegli</option>
+                            <option selected="" value=""><?php _e('Scegli','design-italia');?></option>
                             <?php if($_GET['provincia_id']!='') :?>
                             <?php foreach($temp->{$_GET['regione_id']}->items[$_GET['provincia_id']]->items as $k=>$provincia):?>
                             <option<?php echo $k == $_GET['comune_id'] ? ' selected' : '';?> value="<?php echo $k;?>" ><?php echo $provincia;?></option>
@@ -699,24 +600,12 @@ get_header();
                     <input type="number" class="form-control" id="luogo_a2" name="luogo_a" data-bs-input min="1900" max="<?php echo date('Y');?>" value="<?php echo ($_GET['luogo_a'] && !is_array($_GET['luogo_a']) && strlen($_GET['luogo_a'])) ? $_GET['luogo_a'] : '';?>">
                     </div>
                 </div>
-
-
-                <?php /*<div class="col-12 col-md-4">
-                    <div class="select-wrapper">
-                        <label for="servizio_id2"><?php _e('Servizi','design-italia');?></label>
-                        <select id="servizio_id2" name="servizio_id[]" data-placeholder="<?php _e('Scegli i servizi','design-italia');?>" class="chosen-select" multiple title="<?php _e('Scegli i servizi','design-italia');?>">
-                            
-                            <?php foreach($servizi as $servizio):?>
-                                <option value="<?php echo $servizio->term_id;?>"<?php if($_GET['servizio_id']):echo in_array($servizio->term_id,$_GET['servizio_id']) ? ' selected' : '';endif;?>><?php echo $servizio->name;?></option>
-                            <?php endforeach;?>
-                        </select>
-                    </div>
-                </div>*/?>
+ 
             </div>
             <div class="row mt-4">
                 <div id="luogo-search" class="form-group col text-center">
-                    <button type="reset" class="btn btn-outline-primary">Annulla</button>
-                    <button type="submit" class="btn btn-primary">Cerca</button>
+                    <button type="reset" class="btn btn-outline-primary"><?php _e('Annulla','design-italia');?></button>
+                    <button type="submit" class="btn btn-primary"><?php _e('Cerca','design-italia');?></button>
                 </div>
             </div>
         </form>
@@ -731,7 +620,7 @@ get_header();
                     <li class="nav-item-filler"></li>
                 </ul> 
                 <div class="tab-content" id="card-simpleContent">
-                    <div class="tab-pane p-4 fade show active" id="card-tab2" role="tabpanel" aria-labelledby="card-simple2-tab" style="overflow: scroll hidden">
+                    <div class="tab-pane p-4 fade" id="card-tab2" role="tabpanel" aria-labelledby="card-simple2-tab" style="overflow: scroll hidden">
                         <table class="table table-primary">
                             <thead>
                                 <tr>
@@ -785,7 +674,7 @@ get_header();
                             </tbody>
                         </table>
                     </div>
-                    <div class="tab-pane p-4 fade" id="card-tab1" role="tabpanel" aria-labelledby="card-simple1-tab">
+                    <div class="tab-pane p-4 fade show active" id="card-tab1" role="tabpanel" aria-labelledby="card-simple1-tab">
                         <div id="results" class="page row my-4 g-4" style="background-color:white">
                         <?php
                         if ( have_posts() ) :
@@ -793,19 +682,9 @@ get_header();
                                 the_post();
                                 
                                 $custom_fields = get_post_meta( $post->ID );
-                                $images        = unserialize($custom_fields['gallery_data'][0]);  
-
-                                $tipologia = wp_get_post_terms( $post->ID, 'tipologia' )[0];
-                                $colore = get_term_meta( $tipologia->term_id, 'color', true );
-                                $loc = get_post_meta( $post->ID, 'luogo_localita_id', true );
-                                foreach($regioni2 as $k=>$v) {
-                                    if($v->localita_id == $loc) {
-                                        $localita = $v;
-                                        break;
-                                    } 
-                                } 
-                                // $query = "SELECT * FROM {$wpdb->prefix}luoghi_foto AS f WHERE f.foto_luogo_id = " . ($post->ID-1000)." AND f.foto_tipo = 2 LIMIT 0, 1";
-                                // $foto = $wpdb->get_results( $query, OBJECT )[0];
+                                $images        = unserialize( $custom_fields['gallery_data'][0] );  
+                                $tipologia     = get_post_meta( $post->ID, 'tipologia' )[0]; 
+                                $localita      = get_post_meta( $post->ID, 'luogo', true ); 
                                 ?>
                                 <div class="col-md-6 col-xl-4">
                                     <div class="card-wrapper border border-light rounded shadow-sm" style="border-top:6px <?php echo $colore;?> solid !important">
