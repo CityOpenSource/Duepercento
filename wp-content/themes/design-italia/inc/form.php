@@ -270,13 +270,13 @@ function wpshout_save_post_if_submitted() {
     $servizi = array_map('convertToIntArray', $_POST['servizio_id']);
     wp_set_post_terms( $new_post, $tipologia, 'tipologia' );
     wp_set_post_terms( $new_post, $servizi, 'servizio' );
-    add_post_meta($new_post, 'luogo_indirizzo', $_POST['indirizzo']); 
-    add_post_meta($new_post, 'luogo_cap', $_POST['cap']); 
-    add_post_meta($new_post, 'luogo_localita_id', $_POST['comune_id']); 
-    add_post_meta($new_post, 'luogo_email', $_POST['email']);  
-    add_post_meta($new_post, 'luogo_telefono', $_POST['telefono']); 
-    add_post_meta($new_post, 'luogo_web', $_POST['sitoweb']); 
-    add_post_meta($new_post, 'luogo_note', (strlen($_POST['orari'])>0 ? $_POST['orari']."\n" : '').$_POST['costobiglietti']); 
+    update_post_meta($new_post, 'luogo_indirizzo', $_POST['indirizzo']); 
+    update_post_meta($new_post, 'luogo_cap', $_POST['cap']); 
+    update_post_meta($new_post, 'luogo_localita_id', $_POST['comune_id']); 
+    update_post_meta($new_post, 'luogo_email', $_POST['email']);  
+    update_post_meta($new_post, 'luogo_telefono', $_POST['telefono']); 
+    update_post_meta($new_post, 'luogo_web', $_POST['sitoweb']); 
+    update_post_meta($new_post, 'luogo_note', (strlen($_POST['orari'])>0 ? $_POST['orari']."\n" : '').$_POST['costobiglietti']); 
 
 
     $regioni = json_decode(file_get_contents(__DIR__.'/../js/localita.json'));
@@ -305,8 +305,8 @@ function wpshout_save_post_if_submitted() {
         curl_close($curlSession);
     
         if(count($jsonData)>0) {
-            add_post_meta($new_post, 'luogo_lat', $jsonData[0]['lat']); 
-            add_post_meta($new_post, 'luogo_lon', $jsonData[0]['lon']); 
+            update_post_meta($new_post, 'luogo_lat', $jsonData[0]['lat']); 
+            update_post_meta($new_post, 'luogo_lon', $jsonData[0]['lon']); 
         }
     } catch (Exception $e) {
 
@@ -321,7 +321,7 @@ function wpshout_save_post_if_submitted() {
                 return "upload error : " . $_FILES[$file]['error'];
             }
             $attach_id = media_handle_upload( $file, $new_post );  
-            add_post_meta($new_post, 'meta_key_to_attach_image_to', $attach_id, false);
+            update_post_meta($new_post, 'meta_key_to_attach_image_to', $attach_id, false);
             $gallery_data['image_id'][]  = $attach_id;
             $gallery_data['image_url'][]  = wp_get_attachment_image_url($attach_id);
             $gallery_data['image_alt'][]  = '';
