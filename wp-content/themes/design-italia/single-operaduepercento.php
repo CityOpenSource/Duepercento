@@ -253,16 +253,45 @@
               <div class="map-wrapper map-column mt-4"> 
                 <div id="mapdettaglio" style="width: 100%; aspect-ratio: 320/180;"></div>
                 <script>
-                  var light = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}.png?api_key=<?php echo get_theme_mod( 'stadiamaps' );?>', {
-                      maxZoom: 19,
-                      attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France'
-                  });
-                    var map = L.map('mapdettaglio',{
+	    var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '© OpenStreetMap'
+            });
+
+            var osmHOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France'
+            });
+
+            var light = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}.png?api_key=<?php echo get_theme_mod( 'stadiamaps' );?>', {
+                maxZoom: 19,
+                attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France'
+            });
+
+            var dark = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png?api_key=<?php echo get_theme_mod( 'stadiamaps' );?>', {
+                maxZoom: 19,
+                attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France'
+            });
+
+            var satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                maxZoom: 19,
+                attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France'
+            });
+
+            
+            var baseMaps = {
+                "Mappa Light": light,
+                "Mappa Dark": dark,
+                "Mappa Satellitare": satellite,
+                "Mappa Standard": osm,
+            };
+	            var map = L.map('mapdettaglio',{
                         center: [<?php echo $lat;?>, <?php echo $lon;?>],
                         layers: [light],
                         zoom: 13,
                     });
                     L.circleMarker([<?php echo $lat;?>, <?php echo $lon;?>], {weight:0.5,radius:8, opacity: 0.9, color: '<?php echo $colore;?>', fillColor:'#666', fillOpacity: 1}).addTo(map);
+		    L.control.layers(baseMaps/* , overlays */).addTo(map);
                 </script>
               </div>
               <?php endif;?>
