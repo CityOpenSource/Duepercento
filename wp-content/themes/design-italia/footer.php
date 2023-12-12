@@ -1,5 +1,3 @@
-
-
     <div class="modal fade search-modal" id="search-modal" tabindex="-1" style="display: none;" data-focus-mouse="false" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content perfect-scrollbar">
@@ -19,9 +17,9 @@
           <div class="row">
             <div class="col-12 footer-items-wrapper logo-wrapper">
               <div class="it-brand-wrapper">
-                <a href="https://www.beniculturali.it/" target="_blank" rel="noopener nofollow"> 
-                  <img width="305" height="60" src="<?php echo get_template_directory_uri();?>/images/mic-logo.png"/>
-                </a>
+                <a href="https://creativitacontemporanea.cultura.gov.it/" title="Vai alla homepage dela DGCC" target="_blank" rel="noopener nofollow">
+		<img width="*" height="80" src="<?php echo get_template_directory_uri();?>/svg/dgcc-logo.svg"/>
+		</a>	
               </div>
             </div>
           </div>
@@ -29,18 +27,20 @@
             <div class="col-md-9 mt-md-4 footer-items-wrapper">
               <h3 class="footer-heading-title"><?php _e('Contatti','design-italia');?></h3>
               <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-5">
                   <p class="footer-info"><!--<?php echo get_theme_mod( 'titolo1' );?><br /><?php echo get_theme_mod( 'titolo2' );?><br />-->
                     <?php echo get_theme_mod( 'indirizzo' );?><br />
-                    <?php _e('Telefono:','design-italia');?> <?php echo get_theme_mod( 'telefono' );?><br />
+					  <?php _e('Telefono:','design-italia');?>  <a href="tel:<?php echo get_theme_mod( 'telefono' );?>" class=""><?php echo get_theme_mod( 'telefono' );?></a><br />
                     <?php _e('Codice fiscale / P. IVA:','design-italia');?> <?php echo get_theme_mod( 'codicefiscalepiva' );?><br /><br />
                     <?php _e('PEO:','design-italia');?> <a href="mailto:<?php echo get_theme_mod( 'peo' );?>" target="_blank"><?php echo get_theme_mod( 'peo' );?></a><br />
                     <?php _e('PEC:','design-italia');?> <a href="mailto:<?php echo get_theme_mod( 'pec' );?>" target="_blank"><?php echo get_theme_mod( 'pec' );?></a><br />
-                    <?php _e('Sito WEB:','design-italia');?> <a href="<?php echo get_theme_mod( 'web' );?>" target="_blank"><?php echo get_theme_mod( 'web' );?></a><br />
-                    <?php _e('Scrivi al progetto:','design-italia');?> <a href="mailto:<?php echo get_theme_mod( 'progetto' );?>" target="_blank"><?php echo get_theme_mod( 'progetto' );?></a><br />
+                    <?php _e('WEB:','design-italia');?> <a href="<?php echo get_theme_mod( 'web' );?>" target="_blank"><?php echo get_theme_mod( 'web' );?></a><br />
+
+<!--  <?php _e('Scrivi al progetto:','design-italia');?> <a href="mailto:<?php echo get_theme_mod( 'progetto' );?>" target="_blank"><?php echo get_theme_mod( 'progetto' );?></a><br />
+-->
                   </p>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                   <?php  
                     $footer1 = array(
                       'theme_location' => 'footer1',
@@ -50,7 +50,7 @@
                     wp_nav_menu($footer1);
                   ?>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                 <?php 
                     $footer2 = array(
                       'theme_location' => 'footer2',
