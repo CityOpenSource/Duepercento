@@ -18,11 +18,6 @@
 
   $tip = get_post_meta( $post->ID, 'luogo_tipologia_id', true );
 
-
-  // $tipologia = wp_get_post_terms( $post->ID, 'tipologia' )[0]; 
-  // $colore = get_term_meta( $tipologia->term_id, 'color', true ); 
-  // $servizi = wp_get_post_terms( $post->ID, 'servizio' );  
-
   $info = []; 
   
   $bando_id  = (int) get_post_meta( $post->ID, 'bando', true );
@@ -215,17 +210,18 @@
                 <div class="splide__track" id="splide01-track" style="padding-left: 0px; padding-right: 0px;">
                   <ul class="splide__list it-carousel-all" id="splide01-list" style="transform: translateX(0px);">
                     <?php foreach($gallery['image_url'] as $k => $item):?>
-                      <li class="splide__slide is-active is-visible" id="splide01-slide<?php echo $k+1;?>" style="margin-right: 24px; width: calc(((100% + 24px) / 3) - 24px);" tabindex="<?php echo $k;?>" data-focus-mouse="false">
-                      <div class="it-single-slide-wrapper">
-                        <figure>
-                          <a href="<?php echo $item;?>" data-lightbox="roadtrip" data-title="<?php $gallery['image_title'][$k];?>"><img src="<?php echo $item;?>" alt="Festa di Sant'Efisio" class="img-fluid"></a>
-                          <figcaption class="figure-caption mt-2"><?php $gallery['caption'][$k];?></figcaption>
-                        </figure>
-                      </div>
+                    <li class="splide__slide is-active is-visible" id="splide01-slide<?php echo $k+1;?>" style="margin-right: 24px; width: calc(((100% + 24px) / 3) - 24px);" tabindex="<?php echo $k;?>" data-focus-mouse="false">
+                    <div class="it-single-slide-wrapper">
+                      <figure>
+                        <a href="<?php echo $item;?>" data-lightbox="roadtrip" data-title="<?php $gallery['image_title'][$k];?>"><img src="<?php echo $item;?>" alt="Festa di Sant'Efisio" class="img-fluid"></a>
+                        <figcaption class="figure-caption mt-2"><?php $gallery['caption'][$k];?></figcaption>
+                      </figure>
+                    </div>
                     </li>
                     <?php endforeach;?>
                   </ul>
                 </div>
+              </div>
             </article> 
             <article id="luogo" class="it-page-section mb-5">
               <h2 class="mb-3"><?php _e('Luogo','design-italia');?></h2>
@@ -253,56 +249,51 @@
               <div class="map-wrapper map-column mt-4"> 
                 <div id="mapdettaglio" style="width: 100%; aspect-ratio: 320/180;"></div>
                 <script>
-	    var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 19,
-                attribution: '© OpenStreetMap'
-            });
+                    var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        maxZoom: 19,
+                        attribution: '© OpenStreetMap'
+                    });
 
-            var osmHOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-                maxZoom: 19,
-                attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France'
-            });
+                    var osmHOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+                        maxZoom: 19,
+                        attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France'
+                    });
 
-            var light = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}.png?api_key=<?php echo get_theme_mod( 'stadiamaps' );?>', {
-                maxZoom: 19,
-                attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France'
-            });
+                    var light = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}.png?api_key=<?php echo get_theme_mod( 'stadiamaps' );?>', {
+                        maxZoom: 19,
+                        attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France'
+                    });
 
-            var dark = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png?api_key=<?php echo get_theme_mod( 'stadiamaps' );?>', {
-                maxZoom: 19,
-                attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France'
-            });
+                    var dark = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png?api_key=<?php echo get_theme_mod( 'stadiamaps' );?>', {
+                        maxZoom: 19,
+                        attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France'
+                    });
 
-            var satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-                maxZoom: 19,
-                attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France'
-            });
+                    var satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                        maxZoom: 19,
+                        attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France'
+                    });
 
-            
-            var baseMaps = {
-                "Mappa Light": light,
-                "Mappa Dark": dark,
-                "Mappa Satellitare": satellite,
-                "Mappa Standard": osm,
-            };
-	            var map = L.map('mapdettaglio',{
+                    
+                    var baseMaps = {
+                        "Mappa Light": light,
+                        "Mappa Dark": dark,
+                        "Mappa Satellitare": satellite,
+                        "Mappa Standard": osm,
+                    };
+                    var map = L.map('mapdettaglio',{
                         center: [<?php echo $lat;?>, <?php echo $lon;?>],
                         layers: [light],
                         zoom: 13,
                     });
                     L.circleMarker([<?php echo $lat;?>, <?php echo $lon;?>], {weight:0.5,radius:8, opacity: 0.9, color: '<?php echo $colore;?>', fillColor:'#666', fillOpacity: 1}).addTo(map);
-		    L.control.layers(baseMaps/* , overlays */).addTo(map);
+                    L.control.layers(baseMaps/* , overlays */).addTo(map);
                 </script>
               </div>
               <?php endif;?>
             </article>
-     
-     
             <?php 
-            
-
             if(strlen($documentazione_url) || strlen($bando_url)):?>
-            
             <article id="allegati" class="it-page-section mb-5">
               <h2 class="mb-3">Allegati</h2>
               <div class="card card-teaser shadow rounded">
@@ -328,9 +319,6 @@
             </article>
             <?php endif;?>
      
-    
-
-    
             <?php if(strlen($metas['luogo_note'][0])):?>
             <article id="note" class="it-page-section mb-5">
             <h2 class="mb-3"><?php _e('Note','design-italia');?></h2>
@@ -346,12 +334,6 @@
             <div class="link-list-wrapper">
               <ul class="link-list">
                 <?php echo implode("\n", $info);?>
-                <!-- <li><a class="list-item px-0" href="#"><span>Sogaer - Aeroporto di Cagliari</span></a></li>
-                <li><a class="list-item px-0" href="#"><span>Autorità Portuale di Cagliari</span></a></li>
-                <li><a class="list-item px-0" href="#"><span>ARST</span></a></li>
-                <li><a class="list-item px-0" href="#"><span>CTM Cagliari</span></a></li>
-                <li><a class="list-item px-0" href="#"><span>Trenitalia</span></a></li>
-                <li><a class="list-item px-0" href="#"><span>Camera di Commercio di Cagliari</span></a></li>-->
               </ul>
             </div>
             </article>
