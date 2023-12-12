@@ -29,7 +29,7 @@ function wpbo_treemap_shortcode() {
     
     foreach($custom_terms as $custom_term) {
         wp_reset_query();
-        $args = array('post_type' => 'luogocontemporaneo','posts_per_page'=>-1,
+        $args = array('post_type' => 'operaduepercento','posts_per_page'=>-1,
             'tax_query' => array(
                 array(
                     'taxonomy' => 'tipologia',
@@ -64,7 +64,7 @@ function wpbo_tipologie_shortcode() {
     $message = '<div class="row mt-5">';
     foreach($custom_terms as $custom_term) {
         wp_reset_query();
-        $args = array('post_type' => 'luogocontemporaneo','posts_per_page' => -1,'orderby'=>'title',
+        $args = array('post_type' => 'operaduepercento','posts_per_page' => -1,'orderby'=>'title',
             'tax_query' => array(
                 array(
                     'taxonomy' => 'tipologia',
