@@ -5,61 +5,13 @@
  * @package Design_Comuni_Italia
  */
 
- 
 global $post;
 global $wpdb;
 
 $regioni = json_decode(file_get_contents(__DIR__.'/js/localita.json'));
-// print_r($regioni->{$_GET['regione_id']}->items);die();
 
 $taxonomies = get_object_taxonomies( array( 'post_type' => 'operaduepercento' ) );   
 $servizi = get_categories('taxonomy=servizio&type=operaduepercento'); 
-// $tipologie = get_categories('taxonomy=tipologia&type=operaduepercento');  
-// // print_r($tipologie);
-
-// $category = $_GET['tipologia_id'];
-// if($_GET['category'] && !is_array($_GET['category']) && strlen($_GET['category'])) {
-//     foreach($tipologie as $tipologia) { 
-//         if($tipologia->slug ===  $_GET['category']) {
-//             $category = $tipologia->term_id;
-//             break;
-//         }
-//     }
-// }
-// $query = "SELECT * 
-// FROM {$wpdb->prefix}luoghi_regioni AS r ORDER BY r.regione_nome";
-// $regioni = $wpdb->get_results( $query, OBJECT );
-
-
-// $query = "SELECT * 
-// FROM {$wpdb->prefix}luoghi_localita AS c 
-// INNER JOIN {$wpdb->prefix}luoghi_province AS p ON c.localita_provincia_id = p.provincia_id
-// INNER JOIN {$wpdb->prefix}luoghi_regioni AS r ON p.provincia_regione_id = r.regione_id 
-// ";
-// $regioni2 = $wpdb->get_results( $query, OBJECT );
-// $temp = new stdClass;
-// foreach($regioni2 as $res) {
-//     if(!is_object($temp->{$res->regione_id}))$temp->{$res->regione_id} = new stdClass;
-//     if(!is_object($temp->{$res->regione_id}->items[$res->provincia_id]))$temp->{$res->regione_id}->items[$res->provincia_id] = new stdClass;
-//     $temp->{$res->regione_id}->items[$res->provincia_id]->items[$res->localita_id] = $res->localita_nome;
-//     $temp->{$res->regione_id}->items[$res->provincia_id]->nome = $res->provincia_nome;
-//     $temp->{$res->regione_id}->nome = $res->regione_nome;
-// }
-
-// function get_tipologia($type) { 
-//     foreach($tipologie as $v) {
-//         if($v->term_id == $type) return $v;
-//     }
-//     return false;
-// }
-// function get_localita($loc) {
-//     foreach($regioni2 as $k=>$v) {
-//         if($v->localita_id == $loc) return $v;
-//     }
-//     return false;
-// }
-
-
 
 function get_args() { 
     $regioni = json_decode(file_get_contents(__DIR__.'/js/localita.json'));
@@ -274,16 +226,8 @@ if($task=='download'):
             # code...
             break;
     }
-
     
 else:
-
-
-
-
-
-
-
 
 
 $groups = [];
@@ -330,24 +274,6 @@ get_header();
                                     <input type="text" class="form-control" id="autore" name="autore" value="<?php echo ($_GET['autore'] && !is_array($_GET['autore']) && strlen($_GET['autore'])) ? $_GET['autore'] : '';?>">
                                 </div>
                             </div>
-
-                            <!-- <div class="col-12 col-md-4">
-                                <div class="form-group">
-                                    <label for="tipologia" class="<?php echo ($_GET['tipologia'] && !is_array($_GET['tipologia']) && strlen($_GET['tipologia'])) ? 'active' : '';?>"><?php _e('Tipologia','design-italia');?></label>
-                                    <input type="text" class="form-control" id="tipologia" name="tipologia" value="<?php echo ($_GET['autore'] && !is_array($_GET['tipologia']) && strlen($_GET['autore'])) ? $_GET['tipologia'] : '';?>">
-                                </div>
-                            </div> -->
-                            <!-- <div class="col-12 col-md-4">
-                                <div class="select-wrapper">
-                                    <label for="tipologia_id"><?php _e('Tipologia','design-italia');?></label>
-                                    <select id="tipologia_id" name="tipologia_id" title="Scegli la tipologia" value="<?php echo $category;?>">
-                                        <option selected="" value=""><?php _e('Scegli','design-italia');?></option>
-                                        <?php foreach($tipologie as $k=>$tipologia):?>
-                                        <option<?php echo $tipologia->term_id == $category ? ' selected' : '';?> value="<?php echo $tipologia->term_id;?>"><?php echo $tipologia->name;?></option>
-                                        <?php endforeach;?>
-                                    </select>
-                                </div>
-                            </div> -->
                         </div>
 
                         <div class="row">
@@ -407,18 +333,6 @@ get_header();
                                 </div>
                             </div>
 
-
-                            <?php /*<div class="col-12 col-md-4">
-                                <div class="select-wrapper">
-                                    <label for="servizio_id"><?php _e('Servizi','design-italia');?></label>
-                                    <select id="servizio_id" name="servizio_id[]" data-placeholder="Scegli i servizi" class="chosen-select" multiple title="<?php _e('Scegli i servizi','design-italia');?>">
-                                        <!-- <option selected="" value="">Scegli</option> -->
-                                        <?php foreach($servizi as $servizio):?>
-                                            <option value="<?php echo $servizio->term_id;?>"<?php if($_GET['servizio_id']):echo in_array($servizio->term_id,$_GET['servizio_id']) ? ' selected' : '';endif;?>><?php echo $servizio->name;?></option>
-                                        <?php endforeach;?>
-                                    </select>
-                                </div>
-                            </div>*/?>
                         </div>
                         <div class="row mt-4">
                             <div id="luogo-search" class="form-group col text-center">
@@ -500,33 +414,9 @@ get_header();
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-10">
                     <?php get_template_part("template-parts/common/breadcrumb"); ?>
-                    <!-- <div class="cmp-hero">
-                        <section class="it-hero-wrapper bg-white align-items-start">
-                            <div class="it-hero-text-wrapper pt-0 ps-0 pb-4 pb-lg-60">
-                                <h1 class="text-black title-xxxlarge mb-2" data-element="page-name">
-                                    Esplora
-                                </h1>
-                                <p class="text-black titillium text-paragraph">
-                                    <?php //echo $description; ?>
-                                </p>
-                            </div>
-                        </section>
-                    </div> -->
                 </div>
             </div>
         </div>
-        <div class="container-fluid px-0">
-            <!-- <article class="article-wrapper"> -->
-
-                <!-- <div class="row variable-gutters"> -->
-                    <!-- <div class="col-lg-12"> -->
-                        
-
-                    <!-- </div> -->
-                <!-- </div> -->
-            <!-- </article> -->
-        </div>
-
 
         <form class="container d-md-none d-block" method="get" action="/esplora/">
             <div class="row">
@@ -622,16 +512,34 @@ get_header();
                 <div class="tab-content" id="card-simpleContent">
                     <div class="tab-pane p-4 fade show active" id="card-tab2" role="tabpanel" aria-labelledby="card-simple2-tab" style="overflow: scroll hidden">
                         <table class="table table-primary">
+                        <?php
+                            $args = [];
+                            if(!empty($_GET['luogo_nome']))    $args['luogo_nome']   = $_GET['luogo_nome'];
+                            if(!empty($_GET['luogo_autore']))  $args['luogo_autore'] = $_GET['luogo_autore'];
+                            if(!empty($_GET['tipologia_id']))  $args['tipologia_id'] = $_GET['tipologia_id'];
+                            if(!empty($_GET['regione_id']))    $args['regione_id']   = $_GET['regione_id'];
+                            if(!empty($_GET['provincia_id']))  $args['provincia_id'] = $_GET['provincia_id'];
+                            if(!empty($_GET['citta_id']))      $args['citta_id']     = $_GET['citta_id'];
+                            if(!empty($_GET['luogo_da']))      $args['luogo_da']     = $_GET['luogo_da'];
+                            if(!empty($_GET['luogo_a']))       $args['luogo_a']      = $_GET['luogo_a'];
+                            $ar = [];
+                            foreach($args as $k=>$v): 
+                                $ar[] = "$k=$v";
+                            endforeach; 
+                            $url = get_post_type_archive_link( 'operaduepercento');
+                            $orderby = $_GET['orderby'];
+                            $orderdir = $_GET['orderdir'];
+                        ?>
                             <thead>
                                 <tr>
                                     <th scope="row"></th>
                                     <!-- <th>Provincia</th> -->
-                                    <th><?php _e('Località','design-italia');?></th>
-                                    <th><?php _e('Denominazione','design-italia');?></th>
-                                    <th><?php _e('Opera pubblica','design-italia');?></th>
-                                    <th><?php _e('Autore','design-italia');?></th>
-                                    <th><?php _e('Tipologia','design-italia');?></th>
-                                    <th><?php _e('Data','design-italia');?></th>
+                                    <th><a class="sortlink" href="<?php echo $url.'?'.implode('&',$ar).'&orderby=localita&orderdir='.($orderby==='localita' ? ($orderdir == 'desc' ? 'asc' : 'desc') : 'asc');?>#card-tab2"><?php _e('Località','design-italia');?></a><?php if($orderby==='localita'):?><svg class="icon icon-sm right"><use href="<?php echo get_template_directory_uri();?>/svg/sprites.svg#it-arrow-<?php echo $orderdir == 'desc' ? 'down' : 'up';?>-triangle"></use></svg><?php endif;?></th>
+                                    <th><a class="sortlink" href="<?php echo $url.'?'.implode('&',$ar).'&orderby=denominazione&orderdir='.($orderby==='denominazione' ? ($orderdir == 'desc' ? 'asc' : 'desc') : 'asc');?>#card-tab2"><?php _e('Denominazione','design-italia');?></a><?php if($orderby==='denominazione'):?><svg class="icon icon-sm right"><use href="<?php echo get_template_directory_uri();?>/svg/sprites.svg#it-arrow-<?php echo $orderdir == 'desc' ? 'down' : 'up';?>-triangle"></use></svg><?php endif;?></th>
+                                    <th><a class="sortlink" href="<?php echo $url.'?'.implode('&',$ar).'&orderby=opera_pubblica&orderdir='.($orderby==='opera_pubblica' ? ($orderdir == 'desc' ? 'asc' : 'desc') : 'asc');?>#card-tab2"><?php _e('Opera pubblica','design-italia');?></a><?php if($orderby==='opera_pubblica'):?><svg class="icon icon-sm right"><use href="<?php echo get_template_directory_uri();?>/svg/sprites.svg#it-arrow-<?php echo $orderdir == 'desc' ? 'down' : 'up';?>-triangle"></use></svg><?php endif;?></th>
+                                    <th><a class="sortlink" href="<?php echo $url.'?'.implode('&',$ar).'&orderby=autore&orderdir='.($orderby==='autore' ? ($orderdir == 'desc' ? 'asc' : 'desc') : 'asc');?>#card-tab2"><?php _e('Autore','design-italia');?></a><?php if($orderby==='autore'):?><svg class="icon icon-sm right"><use href="<?php echo get_template_directory_uri();?>/svg/sprites.svg#it-arrow-<?php echo $orderdir == 'desc' ? 'down' : 'up';?>-triangle"></use></svg><?php endif;?></th>
+                                    <th><a class="sortlink" href="<?php echo $url.'?'.implode('&',$ar).'&orderby=tipologia&orderdir='.($orderby==='tipologia' ? ($orderdir == 'desc' ? 'asc' : 'desc') : 'asc');?>#card-tab2"><?php _e('Tipologia','design-italia');?></a><?php if($orderby==='tipologia'):?><svg class="icon icon-sm right"><use href="<?php echo get_template_directory_uri();?>/svg/sprites.svg#it-arrow-<?php echo $orderdir == 'desc' ? 'down' : 'up';?>-triangle"></use></svg><?php endif;?></th>
+                                    <th><a class="sortlink" href="<?php echo $url.'?'.implode('&',$ar).'&orderby=data&orderdir='.($orderby==='data' ? ($orderdir == 'desc' ? 'asc' : 'desc') : 'asc');?>#card-tab2"><?php _e('Data','design-italia');?></a><?php if($orderby==='data'):?><svg class="icon icon-sm right"><use href="<?php echo get_template_directory_uri();?>/svg/sprites.svg#it-arrow-<?php echo $orderdir == 'desc' ? 'down' : 'up';?>-triangle"></use></svg><?php endif;?></th>
                                     <th><?php _e('Quota','design-italia');?></th>
                                     <th><?php _e('Bando','design-italia');?></th>
                                     <th><?php _e('Documentazione','design-italia');?></th>
@@ -645,8 +553,6 @@ get_header();
 
                                         $custom_fields = get_post_meta( $post->ID );
                                         $images        = unserialize($custom_fields['gallery_data'][0]);
-                                        // $tipologia     = wp_get_post_terms( $post->ID, 'tipologia' )[0];
-
 
                                         $bando_id  = (int) get_post_meta( $post->ID, 'bando', true );
                                         $bando_url = $bando_id ? wp_get_attachment_url( $bando_id ) : '';
@@ -656,9 +562,9 @@ get_header();
                                         
                                 ?>
                                 <tr>
-                                    <td><a href="<?php echo get_permalink( );?>"><img src="<?php echo $images['image_url'][0];?>" style="object-fit:cover;width:100px;height:100px;" alt="<?php echo $images['image_alt'][0];?>" /></a></td> 
+                                    <td><?php foreach($images['image_url'] as $k=>$img):?><a href="<?php echo $img;?>" data-title="<?php echo esc_html( get_the_title() );?>" data-lightbox="<?php echo $images['image_url'][0];?>"><?php echo $k==0 ? '<img src="'.$img.'" style="object-fit:cover;width:100px;height:100px;" alt="'.$img.'" />':'';?></a><?php endforeach;?></td>
                                     <td><?php echo $custom_fields['luogo'][0];?></td>
-                                    <td><?php echo the_title();?></td>
+                                    <td><a href="<?php echo get_permalink( );?>"><?php echo the_title();?></a></td>
                                     <td><?php echo $custom_fields['opera_pubblica'][0];?></td>
                                     <td><?php echo $custom_fields['autore'][0];?></td>
                                     <td><?php echo $custom_fields['tipologia'][0];?></td>
@@ -719,33 +625,11 @@ get_header();
                     </div>
                 </div>
                 <div class="text-center my-5">
-                    <?php
-                        $args = [];
-                        if(!empty($_GET['luogo_nome']))    $args['luogo_nome']   = $_GET['luogo_nome'];
-                        if(!empty($_GET['autore']))        $args['autore']       = $_GET['autore'];
-                        if(!empty($_GET['tipologia']))     $args['tipologia']    = $_GET['tipologia'];
-                        if(!empty($_GET['regione_id']))    $args['regione_id']   = $_GET['regione_id'];
-                        if(!empty($_GET['provincia_id']))  $args['provincia_id'] = $_GET['provincia_id'];
-                        if(!empty($_GET['citta_id']))      $args['citta_id']     = $_GET['citta_id'];
-                        if(!empty($_GET['luogo_da']))      $args['luogo_da']     = $_GET['luogo_da'];
-                        if(!empty($_GET['luogo_a']))       $args['luogo_a']      = $_GET['luogo_a'];
-                    ?>
                     <a class="btn btn-primary mx-1" href="?task=download&type=csv<?php foreach($args as $k=>$v): echo "&$k=$v";endforeach;?>" target="_blank">Download CSV</a> <a class="btn btn-primary mx-1" href="?task=download&type=json<?php foreach($args as $k=>$v): echo "&$k=$v";endforeach;?>" target="_blank">Download JSON</a>
                 </div>
                 <div class="row sr-only">
                     <div class="col-12 text-center pagination">
-                        <?php 
-                            $args = [];
-                            if(!empty($_GET['luogo_nome']))    $args['luogo_nome']   = $_GET['luogo_nome'];
-                            if(!empty($_GET['autore']))        $args['autore']       = $_GET['autore'];
-                            if(!empty($_GET['tipologia']))     $args['tipologia']    = $_GET['tipologia'];
-                            if(!empty($_GET['regione_id']))    $args['regione_id']   = $_GET['regione_id'];
-                            if(!empty($_GET['provincia_id']))  $args['provincia_id'] = $_GET['provincia_id'];
-                            if(!empty($_GET['citta_id']))      $args['citta_id']     = $_GET['citta_id'];
-                            if(!empty($_GET['luogo_da']))      $args['luogo_da']     = $_GET['luogo_da'];
-                            if(!empty($_GET['luogo_a']))       $args['luogo_a']      = $_GET['luogo_a'];
-                            the_posts_pagination(['type'    =>  'list', 'add_args'    =>  $args]);
-                        ?>
+                        <?php the_posts_pagination(['type'    =>  'list', 'add_args'    =>  $args]); ?>
                     </div>
                 </div><!-- div pagination -->
             </div><!-- div container -->
@@ -769,7 +653,6 @@ get_header();
                 </div> 
             </article>
         </div>
-        <?php //x\x\x\get_template_part("template-parts/common/valuta-servizio"); ?>
     </main>
 <?php
 get_footer();

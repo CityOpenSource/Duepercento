@@ -23,7 +23,6 @@ function theme_init(){
 add_action ('init', 'theme_init');
 
 
-
 function twentytwelve_setup() {
     add_theme_support('post-thumbnails');
 }
@@ -51,26 +50,10 @@ function justread_filter_archive( $query ) {
 
         // loop over filters
         foreach( [
-            // 'luogo_indirizzo',
-        // 'luogo_localita_id',
         'cap', 
         'lat',
         'lon',  
-        // 'luogo_note',
-        // 'luogo_url',
-        // 'luogo_localita_id', 
-        
         'autore', 
-        // 'luogo_collocazione',
-        // 'luogo_dimensioni',
-        // 'luogo_promotore',
-        // 'luogo_curatore', 
-        // 'luogo_collocazione',
-        // 'luogo_dimensioni',
-        // 'luogo_promotore',
-        // 'luogo_curatore', 
-        // 'luogo_proprietario',
-        // 'luogo_gestore',
         'tipologia',
         'luogo_opere', ] as $name ) {
 
@@ -104,15 +87,6 @@ function justread_filter_archive( $query ) {
                 'compare'   => '<=',
             );
         }
-        // if( !empty($_GET[ 'tipologia_id' ]) ) {
-        //     $value = sanitize_text_field($_GET[ 'tipologia_id' ]);
-        //     $meta_query[] = array(
-        //         'key'       => 'tipologia_id',
-        //         'value'     => $value,
-        //         'compare'   => '=',
-        //     );
-        // }
-
         if( !empty($_GET[ 'comune_id' ]) ) {
             $value = $regioni->{$_GET['regione_id']}->items->{$_GET['provincia_id']}->items->{$_GET['comune_id']};
             $meta_query[] = array(
@@ -121,18 +95,6 @@ function justread_filter_archive( $query ) {
                 'compare'   => '=',
             );
         }
-
-        
-        // global $wpdb;
-        // if( empty($_GET[ 'comune_id' ])  && !empty($_GET[ 'provincia_id' ]) ) {
-        //     $value = sanitize_text_field($_GET[ 'provincia_id' ]);
-        //     $mypostids = $wpdb->get_col("SELECT localita_id FROM {$wpdb->prefix}luoghi_localita WHERE localita_provincia_id = '{$value}'"); 
-        //     $meta_query[] = array(
-        //         'key'       => 'luogo_localita_id',
-        //         'value'     => $mypostids,
-        //         'compare'   => 'IN',
-        //     );
-        // } 
 
         if( empty($_GET[ 'comune_id' ])  && empty($_GET[ 'provincia_id' ]) && !empty($_GET[ 'regione_id' ]) ) {
             $value = sanitize_text_field($regioni->{$_GET[ 'regione_id' ]}->nome);
@@ -161,57 +123,40 @@ function justread_filter_archive( $query ) {
             }
         }
 
-        // if( !empty($_GET[ 'tipologia_id' ]) ) {
-        //     $query->set('tax_query', array( // NOTE: array of arrays!
-        //         array(
-        //             'taxonomy' => 'tipologia',
-        //             'field'    => 'term_id',
-        //             'terms'    => array($_GET['tipologia_id']),
-        //             'operator'    => 'IN'
-        //         ),
-        //     ));
-        //     if(is_array($tax_query)) {
-        //         $tax_query[]=$tax; 
-        //         $tax_query['relation'] = 'AND';
-        //         $query->set('tax_query', $tax_query);
-        //     } else {
-        //         $query->set('tax_query', array($tax, 'relation' => 'AND'));
-        //     } 
-        // }
-        // if( !empty($_GET[ 'category' ]) ) {
-        //     $query->set('tax_query', array( // NOTE: array of arrays!
-        //         array(
-        //             'taxonomy' => 'tipologia',
-        //             'field'    => 'slug',
-        //             'terms'    => array($_GET['category']),
-        //             // 'operator'    => 'IN'
-        //         ),
-        //     ));
-        //     if(is_array($tax_query)) {
-        //         $tax_query[]=$tax; 
-        //         $tax_query['relation'] = 'AND';
-        //         $query->set('tax_query', $tax_query);
-        //     } else {
-        //         $query->set('tax_query', array($tax, 'relation' => 'AND'));
-        //     } 
-        // }
-        // if( !empty($_GET[ 'servizio_id' ]) ) { 
+        switch($_GET['orderby']) {
+            case 'localita': 
+                $query->set('meta_key','luogo');
+                $query->set('orderby','luogo');
+            break;
+            case 'autore': 
+                $query->set('meta_key','autore');
+                $query->set('orderby','autore');
+            break;
+            case 'data':  
+                $query->set('meta_key','anno');
+                $query->set('orderby','anno');
+            break;
+            case 'opera_pubblica':  
+                $query->set('meta_key','opera_pubblica');
+                $query->set('orderby','opera_pubblica');
+            break;
+            case 'tipologia':  
+                $query->set('meta_key','tipologia');
+                $query->set('orderby','tipologia');
+            break;
+            default:
+                $query->set('orderby','title');
+            break;
+        }
 
-        //     $tax_query = $query->get('tax_query');
-        //     $tax = array(
-        //             'taxonomy' => 'servizio',
-        //             'field'    => 'term_id',
-        //             'terms'    => $_GET['servizio_id'],
-        //             'operator'    => 'AND'
-        //     );
-        //     if(is_array($tax_query)) {
-        //         $tax_query[]=$tax; 
-        //         $tax_query['relation'] = 'AND';
-        //         $query->set('tax_query', $tax_query);
-        //     } else {
-        //         $query->set('tax_query', array($tax, 'relation' => 'AND'));
-        //     } 
-        // } 
+        switch($_GET['orderdir']) {
+            case 'desc':
+                $query->set('order','desc');
+                break;
+            default:
+                $query->set('order','asc');
+            break;
+        } 
     } 
 }
 add_action( 'pre_get_posts', 'justread_filter_archive');
