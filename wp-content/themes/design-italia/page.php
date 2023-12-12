@@ -19,19 +19,7 @@ preg_match_all($ereg, $content, $matches, PREG_PATTERN_ORDER);
         <?php
         while ( have_posts() ) :
             the_post();
-            // $description = dci_get_meta('descrizione','_dci_page_',$post->ID);
             ?>
-            <!-- <div class="it-hero-wrapper">
-            
-            <div class="img-responsive-wrapper">
-                <div class="img-responsive">
-                <div class="img-wrapper">
-                    <img src="https://luoghidelcontemporaneo.beniculturali.it/images/slider/Fondazione_Merz_-_Torino.jpg" title="titolo immagine" alt="descrizione immagine">
-                </div>
-                </div>
-            </div>
-            
-            </div> -->
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-12 col-lg-10">
