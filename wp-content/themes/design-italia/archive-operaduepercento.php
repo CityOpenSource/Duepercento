@@ -167,7 +167,7 @@ if($task=='download'):
             $custom_fields = get_post_meta( $list[0]->ID );
             
             header("Content-Type: text/csv");
-            header("Content-Disposition: attachment; filename=luoghi-del-contemporaneo.csv");
+            header("Content-Disposition: attachment; filename=duepercento.csv");
             $fp = fopen('php://output', 'w');
             fputcsv($fp, $header, ';');
             
@@ -264,7 +264,7 @@ if($task=='download'):
             }
 
             header("Content-Type: application/geo+json");
-            header("Content-Disposition: attachment; filename=luoghi-del-contemporaneo.geojson");
+            header("Content-Disposition: attachment; filename=duepercento.geojson");
 
             echo(json_encode($collection));
             die();
