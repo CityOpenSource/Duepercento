@@ -8,8 +8,7 @@
 global $post;
 get_header();
 
-$content = str_replace(array("\n","\r"),array('',''), get_the_content( ));
-// echo $content;
+$content = str_replace(array("\n","\r"),array('',''), get_the_content( )); 
 
 $ereg = "|<article.*id=\"(.*)\".*>.*<h2.*>(.*)</h2>|Ui";
 $ereg = "|<article.*id=\"([^\"]*)\"[^>]*>.*<h2[^>]*>([^<]*)</h2>|Umi";
@@ -24,7 +23,7 @@ preg_match_all($ereg, $content, $matches, PREG_PATTERN_ORDER);
             ?>
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-12 col-lg-10">
+                    <div class="col-12 col-lg-8">
                         <div class="cmp-hero">
                             <section class="it-hero-wrapper bg-white align-items-start">
                                 <div class="it-hero-text-wrapper pt-0 ps-0 pb-4 pb-lg-60">
@@ -33,9 +32,11 @@ preg_match_all($ereg, $content, $matches, PREG_PATTERN_ORDER);
                             </section>
                         </div>
                     </div>
+                    <div class="col-lg-3 offset-lg-1 d-flex flex-row align-items-center">
+                        <?php get_template_part( "template-parts/actions" ); ?>
+                    </div>
                 </div>
             </div>
- 
             </section>
             <div class="container">
                 <div class="row">
