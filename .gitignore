@@ -4,3 +4,4 @@ wp-admin/error_log
 php.ini
 wp-config.php
 desktop.ini
+-*.*
