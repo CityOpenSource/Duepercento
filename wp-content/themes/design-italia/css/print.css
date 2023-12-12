@@ -1,3 +1,7 @@
+body {
+    zoom: 0.9;
+}
+
 aside, .it-header-slim-wrapper, .it-nav-wrapper #header, .it-nav-wrapper .it-right-zone, #main-container .dropdown {
     display: none!important;
 }
