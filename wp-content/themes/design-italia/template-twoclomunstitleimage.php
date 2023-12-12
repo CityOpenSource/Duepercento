@@ -22,13 +22,13 @@ preg_match_all($ereg, $content, $matches, PREG_PATTERN_ORDER);
                 <section class="it-hero-wrapper it-hero-small-size cmp-hero-img-small">
                     <div class="img-responsive-wrapper">
                         <div class="img-responsive">
-                            <div class="img-wrapper" style="opacity:0.5"><?php echo has_post_thumbnail( ) ? '<img src="'.get_the_post_thumbnail_url(null, array(1920,450)).'" class="figure-img img-fluid" alt="Un\'immagine generica segnaposto con angoli arrotondati in una figura.">':'<img src="https://picsum.photos/800/450" class="figure-img img-fluid" alt="Un\'immagine generica segnaposto con angoli arrotondati in una figura.">';?></div>
-                            <div class="img-wrapper" style="background-color:#666;opacity:0.3"></div>
+                            <div class="img-wrapper" style="opacity:0.5"><?php echo has_post_thumbnail( ) ? '<img src="'.get_the_post_thumbnail_url(null, array(1920,450)).'" class="figure-img img-fluid" alt="">':'<img src="https://duepercento.cultura.gov.it/wp-content/uploads/evi/evi_accardi_inail_venezia.jpg" class="figure-img img-fluid" alt=".">';?></div>
+                            <div class="img-wrapper" style="background-color:#333;opacity:0.2"></div>
                             <div class="img-wrapper position-absolute d-flex justify-content-start align-items-center"> 
                                 <div class="container">
                                 <h1 class="text-black title-xxxlarge mb-2 text-start" data-element="page-name" style="color:white!important">
                                     <?php the_title()?>
-                                </h1> 
+                                </h1>
                                 </div>
                             </div>
                         </div>
@@ -38,21 +38,12 @@ preg_match_all($ereg, $content, $matches, PREG_PATTERN_ORDER);
                 <!-- <p class="title-xsmall cmp-hero-img-small__description"></p> -->
             </section>
             <div class="container">
-                <div class="row">
-                    <div class="col-12 col-lg-10">
+                <div class="row align-items-center">
+                    <div class="col-12 col-lg-8 px-lg-4 d-flex flex-row align-items-center">
                         <?php get_template_part("template-parts/common/breadcrumb"); ?>
-                        <!-- <div class="cmp-hero">
-                            <section class="it-hero-wrapper bg-white align-items-start">
-                                <div class="it-hero-text-wrapper pt-0 ps-0 pb-4 pb-lg-60">
-                                    <h1 class="text-black title-xxxlarge mb-2" data-element="page-name">
-                                        <?php the_title()?>
-                                    </h1>
-                                    <p class="text-black titillium text-paragraph">
-                                        <?php echo $description; ?>
-                                    </p>
-                                </div>
-                            </section>
-                        </div> -->
+                    </div>
+                    <div class="col-lg-3 offset-lg-1">
+                        <?php get_template_part( "template-parts/actions" ); ?>
                     </div>
                 </div>
             </div>
@@ -126,3 +117,4 @@ preg_match_all($ereg, $content, $matches, PREG_PATTERN_ORDER);
     </main>
 <?php
 get_footer();
+?>
