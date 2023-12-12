@@ -91,9 +91,9 @@ while ( $the_query->have_posts() ) {
 }
 }else{
 ?>
-<h2 style='font-weight:bold;color:#000'>Nothing Found</h2>
+<h2 style='font-weight:bold;color:#000'>Non ho trovato niente</h2>
 <div class="alert alert-info">
-  <p>Sorry, but nothing matched your search criteria. Please try again with some different keywords.</p>
+  <p>Scusa, non ho trovato niente secondo i tuoi criteri di ricerca. Prova qualche altra parola chiave.</p>
 </div>
 <?php } ?>
 <div class="row sr-only">
