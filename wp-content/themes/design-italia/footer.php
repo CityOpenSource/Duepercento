@@ -18,7 +18,7 @@
             <div class="col-12 footer-items-wrapper logo-wrapper">
               <div class="it-brand-wrapper">
                 <a href="https://creativitacontemporanea.cultura.gov.it/" title="Vai alla homepage dela DGCC" target="_blank" rel="noopener nofollow">
-		<img width="*" height="80" src="<?php echo get_template_directory_uri();?>/svg/dgcc-logo.svg"/>
+		<img width="" height="80" src="<?php echo get_template_directory_uri();?>/svg/lm-dgcc-bianco.svg" />
 		</a>	
               </div>
             </div>
@@ -36,7 +36,7 @@
                     <?php _e('PEC:','design-italia');?> <a href="mailto:<?php echo get_theme_mod( 'pec' );?>" target="_blank"><?php echo get_theme_mod( 'pec' );?></a><br />
                     <?php _e('WEB:','design-italia');?> <a href="<?php echo get_theme_mod( 'web' );?>" target="_blank"><?php echo get_theme_mod( 'web' );?></a><br />
 
-<!--  <?php _e('Scrivi al progetto:','design-italia');?> <a href="mailto:<?php echo get_theme_mod( 'progetto' );?>" target="_blank"><?php echo get_theme_mod( 'progetto' );?></a><br />
+<!-- <HR> <?php _e('Scrivi al progetto:','design-italia');?> <a href="mailto:<?php echo get_theme_mod( 'progetto' );?>" target="_blank"><?php echo get_theme_mod( 'progetto' );?></a><br />
 -->
                   </p>
                 </div>
