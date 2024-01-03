@@ -61,7 +61,7 @@ preg_match_all($ereg, $content, $matches, PREG_PATTERN_ORDER);
                                                         <button class="accordion-button pb-10 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-one" aria-expanded="true" aria-controls="collapse-one">
                                                         <?php _e('INDICE DELLA PAGINA','design-italia');?>
                                                         <svg class="icon icon-xs right">
-                                                            <use href="../assets/bootstrap-italia/dist/svg/sprites.svg#it-expand"></use>
+                                                            <use href="<?php echo get_template_directory_uri();?>/svg/sprites.svg#it-expand"></use>
                                                         </svg>
                                                         </button>
                                                     </span>

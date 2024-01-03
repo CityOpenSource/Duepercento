@@ -24,7 +24,7 @@ $the_query = new WP_Query( $args );
                 <div class="input-group-prepend">
                     <div class="input-group-text">
                         <svg class="icon icon-md">
-                        <use href="../assets/bootstrap-italia/dist/svg/sprites.svg#it-search"></use>
+                        <use href="<?php echo get_template_directory_uri();?>/svg/sprites.svg#it-search"></use>
                         </svg>
                     </div>
                 </div>
@@ -47,7 +47,7 @@ $the_query = new WP_Query( $args );
                 
                   <span class="rounded-icon">
                     <svg class="icon icon-primary icon-xs" aria-hidden="true">
-                      <use href="../assets/bootstrap-italia/dist/svg/sprites.svg#it-funnel"></use>
+                      <use href="<?php echo get_template_directory_uri();?>/svg/sprites.svg#it-funnel"></use>
                     </svg>
                   </span>
                 
