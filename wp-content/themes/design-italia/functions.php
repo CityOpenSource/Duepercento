@@ -23,16 +23,16 @@ function theme_init(){
 add_action ('init', 'theme_init');
 
 
-function twentytwelve_setup() {
+function twentytwentyfour_setup() {
     add_theme_support('post-thumbnails');
 }
-add_action( 'after_setup_theme', 'twentytwelve_setup' );
+add_action( 'after_setup_theme', 'twentytwentyfour_setup' );
 
 
 function custom_type_archive_display($query) {
     if (is_post_type_archive('operaduepercento') && $query->is_main_query()) {
-         $query->set('posts_per_page', 12);
-         $query->set('orderby', 'date' );
+         $query->set('posts_per_page', 120);
+         $query->set('orderby', 'luogo_opere' );
          $query->set('order', 'DESC' );
     }     
 }
