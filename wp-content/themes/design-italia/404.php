@@ -1,9 +1,7 @@
 <?php 
 get_header();
 ?>
-
-<p class="text-black titillium text-paragraph"><?php _e( 'Oops! La pagina che cerchi non è stata trovata,<br> <a href="javascript:history.back();" title="Torna alla pagina precedente">torna indietro</a> o utilizza il menu per continuare la navigazione.', 'design-italia' ); ?></p>
-                   
-       <?php
+<H3><?php _e( 'Oops! La pagina che cerchi non &egrave; stata trovata, <a href="javascript:history.back();" title="Torna alla pagina precedente">torna indietro</a> o utilizza il menu per continuare la navigazione.', 'design-italia' ); ?></H3>
+<?php
 get_footer( );
 ?>
