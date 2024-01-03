@@ -24,6 +24,16 @@
   $bando_url = $bando_id ? wp_get_attachment_url( $bando_id ) : '';
   $documentazione_id  = (int) get_post_meta( $post->ID, 'documentazione', true );
   $documentazione_url = $documentazione_id ? wp_get_attachment_url( $documentazione_id ) : '';
+
+
+  $commissione = $metas['commissione'][0];
+
+  if(strlen($metas['autore'][0])) $info[__('Autore','design-italia')] = $metas['autore'][0];
+  if(strlen($metas['anno_opera'][0])) $info[__('Anno','design-italia')] = $metas['anno_opera'][0];
+  if(strlen($metas['tipologia'][0])) $info[__('Tipologia','design-italia')] = $metas['tipologia'][0];
+  if(strlen($metas['categoria'][0])) $info[__('Categoria','design-italia')] = $metas['categoria'][0];
+  if(strlen($metas['quota'][0])) $info[__('Quota','design-italia')] = $metas['quota'][0];
+
 ?>
 
 <main>
@@ -163,8 +173,8 @@
                             <div class="accordion-body">
                               <ul class="link-list" data-element="page-index">
                                 <li class="nav-item">
-                                  <a class="nav-link active" href="#cos-e">
-                                    <span class="title-medium"><?php _e("Cos'è?",'design-italia');?></span>
+                                  <a class="nav-link active" href="#opera">
+                                    <span class="title-medium"><?php _e("Opera",'design-italia');?></span>
                                   </a>
                                 </li> 
                                 <li class="nav-item">
@@ -172,13 +182,6 @@
                                     <span class="title-medium"><?php _e('Luogo','design-italia');?></span>
                                   </a>
                                 </li> 
-                                <?php if(count($info)):?>
-                                <li class="nav-item">
-                                  <a class="nav-link" href="#info">
-                                    <span class="title-medium"><?php _e('Info','design-italia');?></span>
-                                  </a>
-                                </li>
-                                <?php endif;?>
                                 <?php if(strlen($bando_url)||strlen($documentazione_url)):?>
                                 <li class="nav-item">
                                   <a class="nav-link" href="#allegati">
@@ -186,6 +189,23 @@
                                   </a>
                                 </li>
                                 <?php endif;?>
+                                
+                                <?php if(strlen($commissione)):?>
+                                <li class="nav-item">
+                                  <a class="nav-link" href="#commissione">
+                                    <span class="title-medium"><?php _e('Commissione','design-italia');?></span>
+                                  </a>
+                                </li>
+                                <?php endif;?>
+                                
+                                <?php if(count($info)):?>
+                                <li class="nav-item">
+                                  <a class="nav-link" href="#info">
+                                    <span class="title-medium"><?php _e('Info','design-italia');?></span>
+                                  </a>
+                                </li>
+                                <?php endif;?>
+
                               </ul>
                             </div>
                           </div>
@@ -198,8 +218,8 @@
             </div>      
           </aside>
           <section class="col-lg-8 it-page-sections-container border-light">
-            <article id="cos-e" class="it-page-section mb-5" data-audio="">
-              <h2 class="mb-3"><?php _e("Cos'è?",'design-italia');?></h2>
+            <article id="opera" class="it-page-section mb-5" data-audio="">
+              <h2 class="mb-3"><?php _e("Opera",'design-italia');?></h2>
               <?php the_content();?>
               <div class="it-carousel-wrapper it-carousel-landscape-abstract-three-cols splide splide--slide splide--ltr splide--draggable is-active is-initialized" data-bs-carousel-splide="" id="splide01">
                 <div class="it-header-block">
@@ -317,7 +337,16 @@
                 </div>
               </div>
             </article>
-            <?php endif;?>
+            <?php endif;?> 
+
+            <?php if(strlen($commissione)):?>
+              <article id="commissione" class="it-page-section mb-5">
+              <h2 class="mb-3"><?php _e('Commissione','design-italia');?></h2>
+                <div class="link-list-wrapper mb-3">
+                  <?php echo $commissione;?>
+                </div>
+              </article>
+              <?php endif;?>
      
             <?php if(strlen($metas['luogo_note'][0])):?>
             <article id="note" class="it-page-section mb-5">
@@ -333,7 +362,9 @@
             <h2 class="mb-3"><?php _e('Informazioni varie','design-italia');?></h2>
             <div class="link-list-wrapper">
               <ul class="link-list">
-                <?php echo implode("\n", $info);?>
+                <?php foreach($info as $k=>$v):?>
+                <li><strong><?php echo $k;?>:</strong> <?php echo $v;?></li>
+                <?php endforeach;?>
               </ul>
             </div>
             </article>
